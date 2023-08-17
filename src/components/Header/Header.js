@@ -22,7 +22,10 @@ function Header() {
           <AccountButton />
         </>
         :
-        <BurgerButton onClick={toggleMenuVisibility} isOpen={isMenuOpen} />
+        <>
+          <BurgerButton onClick={toggleMenuVisibility} isOpen={isMenuOpen} />
+          {isMenuOpen && <DropdownMenu />}
+        </>
       }
     </header>
   );
