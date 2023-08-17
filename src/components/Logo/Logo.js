@@ -10,9 +10,11 @@ function Logo() {
   return (
     <img
       src={logo}
-      alt='Логотип'
-      className='logo'
+      alt="Логотип"
+      className="logo"
       onClick={handleClick}
     />
   );
 }
+
+export default Logo;
