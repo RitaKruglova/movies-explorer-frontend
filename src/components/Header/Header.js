@@ -3,6 +3,7 @@ import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 import BurgerButton from "../BurgerButton/BurgerButton";
 import { useState } from "react";
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +19,7 @@ function Header() {
         window.innerWidth > 768
         ?
         <>
-          <Navigation />
+          <Navigation needMainLink={false}/>
           <AccountButton />
         </>
         :
