@@ -1,4 +1,4 @@
-import NavTab from '../App/NavTab/NavTab';
+import NavTab from '../NavTab/NavTab';
 import webImage from '../../images/web.svg';
 
 function Promo() {

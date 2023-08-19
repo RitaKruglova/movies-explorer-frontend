@@ -4,7 +4,6 @@ import Navigation from "../Navigation/Navigation";
 import BurgerButton from "../BurgerButton/BurgerButton";
 import { useState, useEffect } from "react";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
-import { Link } from "react-router-dom";
 import HeaderAuth from "../HeaderAuth/HeaderAuth";
 
 function Header() {
