@@ -1,9 +1,9 @@
+import MainPageTitle from "../MainPageTitle/MainPageTitle";
+
 function AboutProject() {
   return (
     <section className="about-project">
-      <div className="about-project__line">
-        <h2 className="about-project__title">О проекте</h2>
-      </div>
+      <MainPageTitle text="О проекте" />
       <ul className="about-project__description">
         <li
           className="about-project__description-cell">Дипломный проект включал 5 этапов</li>
