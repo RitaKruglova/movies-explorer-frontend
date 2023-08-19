@@ -3,8 +3,10 @@ import SearchForm from '../SearchForm/SearchForm';
 
 function Movies() {
   return (
-    <Header />
-    <SearchForm />
+    <div className="movies">
+      <Header />
+      <SearchForm />
+    </div>
   )
 }
 
