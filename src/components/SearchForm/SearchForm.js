@@ -1,3 +1,5 @@
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+
 function SearchForm() {
   return (
     <div className="search">
@@ -15,19 +17,7 @@ function SearchForm() {
             Найти
           </button>
         </div>
-        <div className="search__switch-container">
-          <input
-            className="search__checkbox"
-            type="checkbox"
-            id="short-films"
-          />
-          <label
-            className="search__checkbox-label"
-            for="short-films"
-          >
-            Короткометражки
-          </label>
-        </div>
+        <FilterCheckbox />
       </form>
     </div>
   );
