@@ -8,7 +8,7 @@ import HeaderAuth from "../HeaderAuth/HeaderAuth";
 
 function Header({modifier, isMainPage = false}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAuthorized, setIsAuthorized] = useState(true);
+  const [isAuthorized, setIsAuthorized] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
