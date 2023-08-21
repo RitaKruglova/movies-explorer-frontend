@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import HeaderAuth from "../HeaderAuth/HeaderAuth";
 
-function Header() {
+function Header({modifier}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -28,7 +28,7 @@ function Header() {
   }
 
   return (
-    <header className="header">
+    <header className={`header ${modifier}`}>
       <Logo />
         {windowWidth > 768 && isAuthorized && (
           <>

@@ -1,0 +1,10 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 74px;
+}
+
+.header_color_blue {
+  background-color: #073042;
+}

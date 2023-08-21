@@ -7,15 +7,17 @@ import Promo from "../Promo/Promo";
 import Techs from "../Techs/Techs";
 
 function Main() {
-  <main className="main">
-    <Header />
-    <Promo />
-    <AboutProject />
-    <Techs />
-    <AboutMe />
-    <Portfolio />
-    <Footer />
-  </main>
+  return (
+    <main className="main">
+      <Header modifier=" header_color_blue" />
+      <Promo />
+      <AboutProject />
+      <Techs />
+      <AboutMe />
+      <Portfolio />
+      <Footer />
+    </main>
+  )
 }
 
 export default Main;
