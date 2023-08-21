@@ -3,7 +3,9 @@ function NavTab() {
     <button
       type="button"
       className="navtab"
-    />
+    >
+      Узнать больше
+    </button>
   )
 }
 

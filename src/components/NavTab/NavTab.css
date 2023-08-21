@@ -1,0 +1,12 @@
+.navtab {
+  width: 129px;
+  height: 36px;
+  background-color: #073042;
+  color: #FFF;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  border: 1px solid white;
+  border-radius: 3px;
+}

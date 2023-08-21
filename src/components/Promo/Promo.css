@@ -1,0 +1,37 @@
+.promo {
+  background-color: #073042;
+  height: 574px;
+  width: 100%;
+  display: flex;
+}
+
+.promo__info {
+  margin: 75px auto auto 70px;
+}
+
+.promo__title {
+  width: 640px;
+  color: #FFF;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  margin: 0 0 36px 0;
+}
+
+.promo__subtitle {
+  width: 310px;
+  color: #FFF;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.5;
+  margin-bottom: 146px;
+}
+
+.promo__image {
+  width: 310px;
+  height: 304px;
+  margin: 75px 50px auto auto;
+}
