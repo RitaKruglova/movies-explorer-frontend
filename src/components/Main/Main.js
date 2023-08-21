@@ -9,7 +9,7 @@ import Techs from "../Techs/Techs";
 function Main() {
   return (
     <main className="main">
-      <Header modifier=" header_color_blue" />
+      <Header modifier=" header_color_blue" isMainPage={true}/>
       <Promo />
       <AboutProject />
       <Techs />

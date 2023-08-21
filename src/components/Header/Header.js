@@ -6,9 +6,9 @@ import { useState, useEffect } from "react";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import HeaderAuth from "../HeaderAuth/HeaderAuth";
 
-function Header({modifier}) {
+function Header({modifier, isMainPage = false}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -25,6 +25,12 @@ function Header({modifier}) {
 
   function toggleMenuVisibility() {
     setIsMenuOpen(!isMenuOpen);
+
+    if (!isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
   }
 
   return (
@@ -32,7 +38,7 @@ function Header({modifier}) {
       <Logo />
         {windowWidth > 768 && isAuthorized && (
           <>
-            <Navigation />
+            <Navigation isMainPage={isMainPage}/>
             <AccountButton />
           </>
         )}
@@ -42,7 +48,7 @@ function Header({modifier}) {
         {windowWidth <= 768 && isAuthorized && (
           <>
             <BurgerButton onClick={toggleMenuVisibility} isOpen={isMenuOpen} />
-            {isMenuOpen && <DropdownMenu />}
+            {isMenuOpen && <DropdownMenu isDropdownMenuPlace={true} />}
           </>
         )}
         {windowWidth <= 768 && !isAuthorized && (

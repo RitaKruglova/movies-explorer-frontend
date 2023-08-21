@@ -1,0 +1,41 @@
+.account-button {
+  width: 100px;
+  height: 32px;
+  margin: auto 70px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2BE080;
+  border-radius: 40px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+  padding: 0 3px 0 11px;
+  font-feature-settings: 'clig' off, 'liga' off;
+  border: none;
+}
+
+.account-button__round {
+  border-radius: 50%;
+  background-color: white;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.account-button__image {
+  width: 10,4px;
+  height: 10,4px;
+}
+
+@media screen and (max-width: 768px) {
+  .account-button {
+    position: absolute;
+    top: 902px;
+    right: 210px;
+    margin: 0;
+  }
+}
