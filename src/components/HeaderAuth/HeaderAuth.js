@@ -1,10 +1,32 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function HeaderAuth() {
+  const navigate = useNavigate();
+
+  function handleRegisterClick() {
+    navigate('/signup');
+  }
+
+  function handleLoginClick() {
+    navigate('/signin');
+  }
+
   return (
     <nav className="header-auth">
-      <Link className="header-auth__link" to="/signup">Регистрация</Link>
-      <Link className="header-auth__link" to="/signin">Войти</Link>
+      <button
+        className="header-auth__button"
+        type="button"
+        onClick={handleRegisterClick}
+      >
+        Регистрация
+      </button>
+      <button
+        className="header-auth__button"
+        type="button"
+        onClick={handleLoginClick}
+      >
+        Войти
+      </button>
     </nav>
   )
 }

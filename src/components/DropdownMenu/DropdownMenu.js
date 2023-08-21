@@ -4,10 +4,10 @@ import AccountButton from "../AccountButton/AccountButton";
 function DropdownMenu() {
 
   return (
-    <>
-      <Navigation needMainLink={true} />
+    <div className="dropdown-menu">
+      <Navigation isDropdownMenuPlace={true} />
       <AccountButton />
-    </>
+    </div>
   )
 }
 
