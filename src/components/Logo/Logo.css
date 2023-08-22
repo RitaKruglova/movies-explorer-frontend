@@ -9,3 +9,9 @@
     margin: auto 0 auto 30px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .logo {
+    margin: auto 0 auto 14px;
+  }
+}

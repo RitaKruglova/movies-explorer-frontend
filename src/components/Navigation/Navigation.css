@@ -1,6 +1,7 @@
 .navigation {
   display: flex;
   align-items: center;
+  margin-left: 63px;
 }
 
 .navigation__link {
@@ -50,11 +51,31 @@
 }
 
 @media screen and (max-width: 768px) {
+  .navigation {
+    margin: 0;
+  }
+
+  .navigation__container {
+    display: flex;
+    flex-direction: column;
+  }
+
   .navigation__link:first-of-type {
     margin: 0 0 28px;
   }
 
   .navigation__link_active {
     text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .navigation_place_dropdown-menu {
+    width: 100%;
+  }
+
+  .navigation__link_place_dropdown-menu {
+    font-style: normal;
+
   }
 }

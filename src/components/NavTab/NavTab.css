@@ -9,4 +9,17 @@
   line-height: 16px;
   border: 1px solid white;
   border-radius: 3px;
+  padding: 0;
+}
+
+@media screen and (max-width: 540px) {
+  .navtab {
+    margin: 0 0 40px 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .navtab {
+    margin: 0 0 30px;
+  }
 }

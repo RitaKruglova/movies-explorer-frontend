@@ -29,6 +29,22 @@
 
 @media screen and (max-width: 786px) {
   .header-auth {
-    margin: 0 30px 0 0;
+    margin: 0 13px 0 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header-auth {
+
+  }
+  .header-auth__button {
+    width: 54px;
+    height: 26px;
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+  .header-auth__button:first-of-type {
+    margin: 0 24px 0 0;
   }
 }
