@@ -3,7 +3,7 @@ import MainPageTitle from "../MainPageTitle/MainPageTitle";
 function Techs() {
   return (
     <section className="techs">
-      <MainPageTitle text="Технологии" />
+      <MainPageTitle text="Технологии" isPlaceTechs={true} />
       <h3 className="techs__title">7 технологий</h3>
       <p className="techs__subtitle">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
       <ul className="techs__list">
