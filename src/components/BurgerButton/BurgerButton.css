@@ -8,7 +8,7 @@
 }
 
 .burger-button__svg {
-  margin: auto;
+  margin: auto -19px;
 }
 
 .burger-button__line {
@@ -58,4 +58,16 @@
 
 .burger-button:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .burger-button__svg {
+    margin: auto -9px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .burger-button__svg {
+    margin: auto -14px;
+  }
 }

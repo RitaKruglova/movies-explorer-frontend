@@ -1,7 +1,7 @@
 .account-button {
   width: 100px;
   height: 32px;
-  margin: auto 70px auto 0;
+  margin: auto 49px auto 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,11 +31,19 @@
   height: 10,4px;
 }
 
+.account-button_color_white {
+  background-color: white;
+  box-shadow: 3px 5px 6px 5px rgba(0, 0, 0, 0.1);
+}
+
+.account-button__round_color_white {
+  background-color: #F9F9F9;
+}
+
 @media screen and (max-width: 768px) {
   .account-button {
-    position: absolute;
-    top: 902px;
-    right: 210px;
     margin: 0;
+    position: fixed;
+    bottom: 90px;
   }
 }
