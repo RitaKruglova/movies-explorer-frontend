@@ -62,7 +62,7 @@
 
 @media screen and (max-width: 768px) {
   .about-project {
-    height: 495px;
+    height: 585px;
   }
   .about-project__description {
     max-width: 668px;
@@ -81,14 +81,14 @@
   }
 
   .about-project__table {
-    margin: 110px 35px 0 50px;
+    margin: 110px 25px 0 50px;
     grid-template-columns: 140px 1fr;
   }
 }
 
 @media screen and (max-width: 500px) {
   .about-project {
-    height: 572px;
+    height: 641px;
   }
   .about-project__description {
     display: block;
