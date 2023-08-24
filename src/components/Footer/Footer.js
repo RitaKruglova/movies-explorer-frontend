@@ -1,13 +1,19 @@
 function Footer() {
   return (
     <footer className="footer">
-      <h5 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h5>
+      <div className="footer__title-container">
+        <h5 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h5>
+      </div>
       <div className="footer__info">
         <p className="footer__date">© 2023</p>
-        <div className="footer__references-container">
-          <p className="footer__platform">Яндекс.Практикум</p>
-          <p className="footer__platform">Github</p>
-        </div>
+        <ul className="footer__references-container">
+          <li className="footer__list-item">
+            <a className="footer__platform" href="https://practicum.yandex.ru/">Яндекс.Практикум</a>
+          </li>
+          <li className="footer__list-item">
+            <a className="footer__platform" href="https://github.com/RitaKruglova">Github</a>
+          </li>
+        </ul>
       </div>
     </footer>
   )

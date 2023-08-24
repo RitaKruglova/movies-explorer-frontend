@@ -1,10 +1,10 @@
 import Navigation from "../Navigation/Navigation";
 
-function DropdownMenu() {
+function DropdownMenu({isOpen}) {
 
   return (
-    <div className="dropdown-menu">
-      <Navigation isDropdownMenuPlace={true} />
+    <div className={`dropdown-menu${isOpen ? " dropdown-menu_opened" : ""}`}>
+      <Navigation isDropdownMenuPlace={true} isMenuOpen={isOpen} />
     </div>
   )
 }

@@ -32,14 +32,18 @@
 .navigation_place_dropdown-menu {
   position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
+  right: -520px;
   width: 520px;
   height: 100vh;
   flex-direction: column;
   background-color: white;
   opacity: 1;
   padding: 159px 0 0 0;
+  transition: right 0.5s ease;
+}
+
+.navigation_opened {
+  right: 0;
 }
 
 .navigation__link_place_dropdown-menu {
@@ -72,10 +76,14 @@
 @media screen and (max-width: 500px) {
   .navigation_place_dropdown-menu {
     width: 100%;
+    padding: 145px 0 0;
   }
 
   .navigation__link_place_dropdown-menu {
     font-style: normal;
+  }
 
+  .navigation__link:first-of-type {
+    margin: 0 0 24px;
   }
 }

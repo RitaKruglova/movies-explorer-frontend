@@ -12,6 +12,10 @@
   padding: 0;
 }
 
+.navtab:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 540px) {
   .navtab {
     margin: 0 0 40px 0;

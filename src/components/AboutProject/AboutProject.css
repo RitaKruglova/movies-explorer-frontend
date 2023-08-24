@@ -2,15 +2,22 @@
   width: 100%;
   background-color: #FFFFFF;
   height: 608px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-project__container {
+  max-width: 1140px;
+  width: 87vw;
 }
 
 .about-project__description {
   list-style: none;
   max-width: 1140px;
-  margin: 70px 70px 0;
+  margin: 70px 0 0;
   display: grid;
-  grid-template-columns: repeat(2, 50%);
-  column-gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 40px;
   row-gap: 26px;
   padding: 0;
 }
@@ -31,7 +38,7 @@
 
 .about-project__table {
   list-style: none;
-  margin: 110px 50px 0 70px;
+  margin: 110px 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: 228px 1fr;
@@ -64,11 +71,12 @@
   .about-project {
     height: 585px;
   }
+
   .about-project__description {
     max-width: 668px;
-    column-gap: 23px;
+    column-gap: 30px;
     row-gap: 23px;
-    margin: 70px 50px 0;
+    margin: 70px 0 0;
   }
 
   .about-project__description-cell {
@@ -81,7 +89,9 @@
   }
 
   .about-project__table {
-    margin: 110px 25px 0 50px;
+    max-width: 668px;
+    width: 87vw;
+    margin: 110px 0 0 0;
     grid-template-columns: 140px 1fr;
   }
 }
@@ -90,10 +100,17 @@
   .about-project {
     height: 641px;
   }
+
+  .about-project__container {
+    padding: 0;
+    width: 89vw;
+    max-width: 464px;
+  }
+
   .about-project__description {
     display: block;
     max-width: 464px;
-    margin: 0 18px;
+    margin: 0;
   }
 
   .about-project__description-cell {
@@ -104,7 +121,7 @@
   }
 
   .about-project__description-cell_place_bottom {
-    margin: 0 0 60px;
+    margin: 0 0 58px;
     font-size: 11px;
     font-weight: 400;
     line-height: 16px;
@@ -112,21 +129,22 @@
   }
 
   .about-project__description-cell_place_bottom:last-of-type {
-    margin: 0 0 55px;
+    margin: 0 0 60px;
   }
 
   .about-project__table {
     max-width: 464px;
-    margin: 0 18px;
+    width: 89vw;
     grid-template-columns: 100px 1fr;
+    margin: 0;
   }
 
   .about-project__table-cell {
     font-size: 11px;
-    padding-top: 14px;
+    padding-top: 11px;
   }
 
   .about-project__table-cell_place_bottom {
-    padding-top: 11px;
+    padding-top: 7px;
   }
 }

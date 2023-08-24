@@ -2,7 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import AccountButton from "../AccountButton/AccountButton";
 import { useState, useEffect } from "react";
 
-function Navigation({isMainPage, isDropdownMenuPlace = false}) {
+function Navigation({isMainPage, isDropdownMenuPlace = false, isMenuOpen}) {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function Navigation({isMainPage, isDropdownMenuPlace = false}) {
   }, []);
 
   return (
-    <nav className={`navigation${isDropdownMenuPlace ? " navigation_place_dropdown-menu" : ""}`}>
+    <nav className={`navigation${isDropdownMenuPlace ? " navigation_place_dropdown-menu" : ""}${isMenuOpen ? " navigation_opened" : ""}`}>
       <div className="navigation__container">
         {isDropdownMenuPlace
         &&

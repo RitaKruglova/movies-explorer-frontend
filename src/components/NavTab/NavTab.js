@@ -1,11 +1,9 @@
 function NavTab() {
   return (
-    <button
-      type="button"
-      className="navtab"
-    >
-      Узнать больше
-    </button>
+    <a href="#about-project">
+      <button className="navtab" type="button">Узнать больше</button>
+    </a>
+
   )
 }
 

@@ -1,17 +1,8 @@
 .logo {
   width: 38px;
   height: 38px;
-  margin: auto 0 auto 70px;
 }
 
-@media screen and (max-width: 768px) {
-  .logo {
-    margin: auto 0 auto 30px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .logo {
-    margin: auto 0 auto 14px;
-  }
+.logo:hover {
+  cursor: pointer;
 }

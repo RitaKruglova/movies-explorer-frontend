@@ -1,12 +1,12 @@
 .account-button {
   width: 100px;
   height: 32px;
-  margin: auto 49px auto 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #2BE080;
   border-radius: 40px;
+  font-feature-settings: 'clig' off, 'liga' off;
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
@@ -38,6 +38,10 @@
 
 .account-button__round_color_white {
   background-color: #F9F9F9;
+}
+
+.account-button:hover {
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

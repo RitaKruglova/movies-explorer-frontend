@@ -3,15 +3,26 @@
   height: 574px;
   width: 100%;
   display: flex;
+  justify-content: center;
+}
+
+.promo__container {
+  display: flex;
+  max-width: 1140px;
+  width: 90vw;
 }
 
 .promo__info {
-  margin: 75px auto auto 70px;
+  max-width: 1140px;
+  margin: 75px 0 0;
+  
 }
 
 .promo__title {
   width: 50vw;
+  max-width: 640px;
   color: #FFF;
+  font-feature-settings: 'clig' off, 'liga' off;
   font-size: 4vw;
   font-style: normal;
   font-weight: 400;
@@ -22,6 +33,7 @@
 .promo__subtitle {
   width: 310px;
   color: rgba(255, 255, 255, 0.5);
+  font-feature-settings: 'clig' off, 'liga' off;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -33,7 +45,12 @@
   .promo {
     display: block;
     height: 850px;
-    justify-content: center;
+  }
+
+  .promo__container {
+    display: block;
+    padding: 0;
+    width: 100%;
   }
 
   .promo__info {
@@ -74,4 +91,10 @@
   .promo__subtitle {
     margin: 24px auto 80px;
   } 
+}
+
+@media screen and (min-width: 1280px) {
+  .promo__title {
+    font-size: 50px;
+  }
 }
