@@ -35,25 +35,27 @@ function Header({modifier, isMainPage = false}) {
 
   return (
     <header className={`header ${modifier}`}>
-      <Logo />
-        {windowWidth > 768 && isAuthorized && (
-          <>
-            <Navigation isMainPage={isMainPage}/>
-            <AccountButton />
-          </>
-        )}
-        {windowWidth > 768 && !isAuthorized && (
-          <HeaderAuth />
-        )}
-        {windowWidth <= 768 && isAuthorized && (
-          <>
-            <BurgerButton onClick={toggleMenuVisibility} isOpen={isMenuOpen} />
-            {isMenuOpen && <DropdownMenu isDropdownMenuPlace={true} />}
-          </>
-        )}
-        {windowWidth <= 768 && !isAuthorized && (
-          <HeaderAuth />
-        )}
+      <div className="header__container">
+        <Logo />
+          {windowWidth > 768 && isAuthorized && (
+            <>
+              <Navigation isMainPage={isMainPage}/>
+              <AccountButton />
+            </>
+          )}
+          {windowWidth > 768 && !isAuthorized && (
+            <HeaderAuth />
+          )}
+          {windowWidth <= 768 && isAuthorized && (
+            <>
+              <BurgerButton onClick={toggleMenuVisibility} isOpen={isMenuOpen} />
+              <DropdownMenu isDropdownMenuPlace={true} isOpen={isMenuOpen} />
+            </>
+          )}
+          {windowWidth <= 768 && !isAuthorized && (
+            <HeaderAuth />
+          )}
+      </div>
     </header>
   );
 }

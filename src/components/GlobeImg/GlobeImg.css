@@ -1,7 +1,7 @@
 .globe-img {
   width: 310px;
   height: 304px;
-  margin: 75px 50px auto auto;
+  margin: 75px 0 auto auto;
 }
 
 @media screen and (max-width: 1040px) {
