@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import HeaderAuth from "../HeaderAuth/HeaderAuth";
 
-function Header({modifier, isMainPage = false}) {
+function Header({modifier, isMainPage = false, isAccountButtonWhite}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -40,7 +40,7 @@ function Header({modifier, isMainPage = false}) {
           {windowWidth > 768 && isAuthorized && (
             <>
               <Navigation isMainPage={isMainPage}/>
-              <AccountButton />
+              <AccountButton isAccountButtonWhite={isAccountButtonWhite} />
             </>
           )}
           {windowWidth > 768 && !isAuthorized && (

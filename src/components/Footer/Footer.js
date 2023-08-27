@@ -11,7 +11,7 @@ function Footer() {
             <a className="footer__platform" href="https://practicum.yandex.ru/">Яндекс.Практикум</a>
           </li>
           <li className="footer__list-item">
-            <a className="footer__platform" href="https://github.com/RitaKruglova">Github</a>
+            <a className="footer__platform" href="https://github.com/">Github</a>
           </li>
         </ul>
       </div>

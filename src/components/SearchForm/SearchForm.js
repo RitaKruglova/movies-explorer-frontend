@@ -2,16 +2,15 @@ import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 function SearchForm() {
   return (
-    <div className="search">
-      <form className="search__form">
-        <div className="search__container">
+      <form className="search-form">
+        <div className="search-form__container">
           <input
-            className="search__input"
+            className="search-form__input"
             type="text"
             placeholder="Фильм"
           />
           <button
-            className="search__button"
+            className="search-form__button"
             type="submit"
           >
             Найти
@@ -19,7 +18,6 @@ function SearchForm() {
         </div>
         <FilterCheckbox />
       </form>
-    </div>
   );
 }
 

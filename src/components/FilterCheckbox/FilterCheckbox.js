@@ -1,16 +1,16 @@
 function FilterCheckbox() {
   return (
     <div className="filter-checkbox">
-      <input
-        className="filter-checkbox__input"
-        type="checkbox"
-        id="short-films"
-      />
-      <label
-        className="filter-checkbox__label"
-        for="short-films"
-      >
-        Короткометражки
+      <label className="filter-checkbox__label">
+          <input
+              className="filter-checkbox__input"
+              type="checkbox"
+              id="short-films"
+          />
+          <div className="filter-checkbox__visible-input">
+            <span className="filter-checkbox__round" />
+          </div>
+          Короткометражки
       </label>
     </div>
   )
