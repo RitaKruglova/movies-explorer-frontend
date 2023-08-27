@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import accountButtonImage from '../../images/account-button-image.svg';
 
-function AccountButton({isWhite = false}) {
+function AccountButton({isAccountButtonWhite = false}) {
   const navigate = useNavigate();
 
   function handleClick() {
@@ -11,11 +11,11 @@ function AccountButton({isWhite = false}) {
   return (
     <button
       type="button"
-      className={`account-button${isWhite ? " account-button_color_white" : ""}`}
+      className={`account-button${isAccountButtonWhite ? " account-button_color_white" : ""}`}
       onClick={handleClick}
     >
       Аккаунт
-      <div className={`account-button__round${isWhite ? " account-button__round_color_white" : ""}`}>
+      <div className={`account-button__round${isAccountButtonWhite ? " account-button__round_color_white" : ""}`}>
         <img
           className="account-button__image"
           src={accountButtonImage}

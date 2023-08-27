@@ -42,7 +42,7 @@ function Navigation({isMainPage, isDropdownMenuPlace = false, isMenuOpen}) {
           Сохранённые фильмы
         </NavLink>
       </div>
-      {width <= 768 && <AccountButton isWhite={true}/>}
+      {width <= 768 && <AccountButton isAccountButtonWhite={true}/>}
     </nav>
   );
 }
