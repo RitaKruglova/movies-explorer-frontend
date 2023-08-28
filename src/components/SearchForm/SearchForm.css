@@ -24,7 +24,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  width: 87vw;
+  width: 83vw;
 }
 
 .search-form__input:focus {
@@ -46,14 +46,19 @@
   line-height: 18px;
   padding: 0;
   flex-shrink: 0;
+  margin-left: 21px;
 }
 
 @media screen and (max-width: 768px) {
   .search-form {
-    height: 237px;
+    height: 227px;
     margin-top: 80px;
     max-width: 708px;
     width: 92vw;
+  }
+
+  .search-form__input {
+    width: 82vw;
   }
 
 }
@@ -63,6 +68,7 @@
     max-width: 472px;
     width: 91vw;
     margin-top: 84px;
+    height: 194px;
   }
 
   .search-form__container {
@@ -71,6 +77,6 @@
 
   .search-form__input {
     font-size: 18px;
-    width: 72vw;
+    width: 66vw;
   }
 }
