@@ -1,4 +1,4 @@
-.movies {
+.saved-movies {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,8 +6,6 @@
   justify-content: space-between;
 }
 
-.movies__container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.saved-movies__container {
+  margin-bottom: 240px;
 }

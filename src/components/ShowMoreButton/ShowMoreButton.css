@@ -16,6 +16,10 @@
   line-height: normal;
 }
 
+.show-more-button:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 500px) {
   .show-more-button {
     width: 240px;

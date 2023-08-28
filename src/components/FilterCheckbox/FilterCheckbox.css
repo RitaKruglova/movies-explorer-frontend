@@ -23,6 +23,10 @@
   line-height: 18px;
 }
 
+.filter-checkbox__label:hover {
+  cursor: pointer;
+}
+
 .filter-checkbox__visible-input {
   position: relative;
   width: 36px;
@@ -37,7 +41,7 @@
 
 .filter-checkbox__round {
   position: absolute;
-  top: 2.5px;
+  top: 2.4px;
   left: 2px;
   width: 10px;
   height: 10px;
