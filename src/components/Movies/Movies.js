@@ -1,6 +1,8 @@
+import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
+import ShowMoreButton from '../ShowMoreButton/ShowMoreButton';
 
 function Movies() {
   return (
@@ -8,6 +10,8 @@ function Movies() {
       <Header isAccountButtonWhite={true} />
       <SearchForm />
       <MoviesCardList />
+      <ShowMoreButton />
+      <Footer />
     </div>
   )
 }

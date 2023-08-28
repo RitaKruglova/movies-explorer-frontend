@@ -68,6 +68,7 @@
   .footer {
     width: 92vw;
     max-width: 708px;
+    height: 137px;
   }
 }
 
@@ -79,7 +80,7 @@
   }
 
   .footer__title-container {
-    margin: 30px 0 30px;
+    margin: 30px 0 27px;
   }
 
   .footer__title {
@@ -95,10 +96,15 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
+    padding: 0;
   }
 
   .footer__platform {
     font-size: 12px;
+  }
+
+  .footer__list-item:first-of-type {
+    margin: 0 0 9px;
   }
 
   .footer__platform:first-of-type {
