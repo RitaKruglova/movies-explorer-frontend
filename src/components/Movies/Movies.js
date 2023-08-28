@@ -7,10 +7,12 @@ import ShowMoreButton from '../ShowMoreButton/ShowMoreButton';
 function Movies() {
   return (
     <div className="movies">
-      <Header isAccountButtonWhite={true} />
-      <SearchForm />
-      <MoviesCardList />
-      <ShowMoreButton />
+      <div className="movies__container">
+        <Header isAccountButtonWhite={true} />
+        <SearchForm />
+        <MoviesCardList />
+        <ShowMoreButton />
+      </div>
       <Footer />
     </div>
   )

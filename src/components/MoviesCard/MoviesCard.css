@@ -4,6 +4,10 @@
   flex-direction: column;
 }
 
+.movies-card:hover {
+  cursor: pointer;
+}
+
 .movies-card__container {
   height: 209px;
   border-bottom: 1px solid #E8E8E8;
@@ -44,8 +48,21 @@
   padding: 0;
 }
 
+.movies-card__button:hover {
+  cursor: pointer;
+}
+
 .movies-card__button_active {
   background-image: url(../../images/movies-card-like-active.svg);
+}
+
+.movies-card__button_place_saved-movies {
+  background-image: url(../../images/movies-card-like-delete.svg);
+  display: none;
+}
+
+.movies-card__button_visible {
+  display: block;
 }
 
 .movies-card__duration {

@@ -5,7 +5,7 @@
   grid-template-columns: repeat(auto-fit, 270px);
   column-gap: 20px;
   row-gap: 38px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 @media screen and (max-width: 768px) {

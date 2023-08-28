@@ -1,13 +1,13 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList() {
+function MoviesCardList({isSavedMoviesPlace}) {
   return (
     <section className="movies-card-list">
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
-      <MoviesCard />
+      <MoviesCard isSavedMoviesPlace={isSavedMoviesPlace} />
+      <MoviesCard isSavedMoviesPlace={isSavedMoviesPlace} />
+      <MoviesCard isSavedMoviesPlace={isSavedMoviesPlace} />
+      {/* <MoviesCard isSavedMoviesPlace={isSavedMoviesPlace} />
+      <MoviesCard isSavedMoviesPlace={isSavedMoviesPlace} /> */}
       {/* <MoviesCard />
       <MoviesCard />
       <MoviesCard /> */}

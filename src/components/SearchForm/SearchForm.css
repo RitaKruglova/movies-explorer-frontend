@@ -49,6 +49,10 @@
   margin-left: 21px;
 }
 
+.search-form__button:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .search-form {
     height: 227px;
