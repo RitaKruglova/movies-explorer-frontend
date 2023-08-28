@@ -1,0 +1,29 @@
+.show-more-button {
+  width: 320px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: #F9F9F9;
+  border-radius: 6px;
+  margin: 60px 0 115px;
+  border: none;
+  padding: 0;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@media screen and (max-width: 500px) {
+  .show-more-button {
+    width: 240px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .show-more-button {
+    margin: 60px 0 128px;
+  }
+}
