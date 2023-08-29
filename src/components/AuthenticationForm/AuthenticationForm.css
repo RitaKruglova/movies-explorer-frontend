@@ -32,6 +32,10 @@
   border-radius: 3px;
 }
 
+.authentication__button_place_login {
+  margin: 198px 0 16px;
+}
+
 @media screen and (max-width: 500px) {
   .authentication {
     width: 260px;
