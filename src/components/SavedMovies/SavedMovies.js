@@ -3,12 +3,12 @@ import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-function SavedMovies() {
+function SavedMovies({toggleMenuVisibility, isDropdownMenuOpen}) {
   return (
     <div className="saved-movies">
       <div className="saved-movies__container">
-        <Header isAccountButtonWhite={true} />
-        <SearchForm />
+        <Header isAccountButtonWhite={true} toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen}/>
+        <SearchForm isDropdownMenuOpen={isDropdownMenuOpen} />
         <MoviesCardList isSavedMoviesPlace={true} />
       </div>
       <Footer />

@@ -6,8 +6,7 @@ import { useState, useEffect } from "react";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import HeaderAuth from "../HeaderAuth/HeaderAuth";
 
-function Header({modifier, isMainPage = false, isAccountButtonWhite = false}) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+function Header({isMainPage = false, isAccountButtonWhite = false, toggleMenuVisibility, isDropdownMenuOpen}) {
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -23,18 +22,8 @@ function Header({modifier, isMainPage = false, isAccountButtonWhite = false}) {
     };
   }, []);
 
-  function toggleMenuVisibility() {
-    setIsMenuOpen(!isMenuOpen);
-
-    if (!isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }
-
   return (
-    <header className={`header ${modifier}`}>
+    <header className={`header${isMainPage ? " header_color_blue" : ""}`}>
       <div className="header__container">
         <Logo />
           {windowWidth > 768 && isAuthorized && (
@@ -48,8 +37,8 @@ function Header({modifier, isMainPage = false, isAccountButtonWhite = false}) {
           )}
           {windowWidth <= 768 && isAuthorized && (
             <>
-              <BurgerButton onClick={toggleMenuVisibility} isOpen={isMenuOpen} />
-              <DropdownMenu isDropdownMenuPlace={true} isOpen={isMenuOpen} />
+              <BurgerButton onClick={toggleMenuVisibility} isOpen={isDropdownMenuOpen} />
+              <DropdownMenu isDropdownMenuPlace={true} isOpen={isDropdownMenuOpen} />
             </>
           )}
           {windowWidth <= 768 && !isAuthorized && (

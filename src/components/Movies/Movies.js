@@ -4,12 +4,12 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import ShowMoreButton from '../ShowMoreButton/ShowMoreButton';
 
-function Movies() {
+function Movies({toggleMenuVisibility, isDropdownMenuOpen}) {
   return (
     <div className="movies">
       <div className="movies__container">
-        <Header isAccountButtonWhite={true} />
-        <SearchForm />
+        <Header isAccountButtonWhite={true} toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen}/>
+        <SearchForm isDropdownMenuOpen={isDropdownMenuOpen} />
         <MoviesCardList />
         <ShowMoreButton />
       </div>
