@@ -1,0 +1,33 @@
+.authorization-prompt {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.authorization-prompt__question {
+  color: #A0A0A0;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0 6px 0;
+}
+
+.authorization-prompt__link {
+  color: #3456F3;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+  .authorization-prompt__question {
+    font-size: 12px;
+  }
+
+  .authorization-prompt__link {
+    font-size: 12px;
+  }
+}
