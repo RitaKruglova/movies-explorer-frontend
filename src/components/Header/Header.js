@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import HeaderAuth from "../HeaderAuth/HeaderAuth";
 
-function Header({modifier, isMainPage = false, isAccountButtonWhite}) {
+function Header({modifier, isMainPage = false, isAccountButtonWhite = false}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

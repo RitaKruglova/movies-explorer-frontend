@@ -13,6 +13,7 @@ function AccountButton({isAccountButtonWhite = false}) {
       type="button"
       className={`account-button${isAccountButtonWhite ? " account-button_color_white" : ""}`}
       onClick={handleClick}
+      aria-label="Перейти на страницу 'Аккаунт'"
     >
       Аккаунт
       <div className={`account-button__round${isAccountButtonWhite ? " account-button__round_color_white" : ""}`}>

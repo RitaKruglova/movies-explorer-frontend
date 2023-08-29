@@ -33,12 +33,14 @@ function MoviesCard({isSavedMoviesPlace = false}) {
               className={`movies-card__button movies-card__button_place_saved-movies${isHovered ? " movies-card__button_visible" : ""}`}
               type="button"
               onClick={handleLikeClick}
+              aria-label="Поставить или убрать лайк"
             />
             :
             <button
               className={`movies-card__button ${isLiked ? " movies-card__button_active" : ""}`}
               type="button"
               onClick={handleLikeClick}
+              aria-label="Поставить или убрать лайк"
             />
           }
         </div>
