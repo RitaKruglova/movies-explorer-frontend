@@ -8,12 +8,12 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
         <h2 className="profile__title">Привет, Рита!</h2>
         <form className="profile__form">
           <div className="profile__input-container">
-            <label className="profile__label" for="name-input">Имя</label>
-            <input className="profile__input" id="name-input" value="Рита" />
+            <label className="profile__label" for="name-input-profile">Имя</label>
+            <input className="profile__input" id="name-input-profile" value="Рита" />
           </div>
           <div className="profile__input-container">
-            <label className="profile__label" for="email-input">E-mail</label>
-            <input className="profile__input" id="email-input" value="kruglova404@yandex.ru" />
+            <label className="profile__label" for="email-input-profile">E-mail</label>
+            <input className="profile__input" id="email-input-profile" value="kruglova404@yandex.ru" />
           </div>
           <div className="profile__button-container">
             <button
