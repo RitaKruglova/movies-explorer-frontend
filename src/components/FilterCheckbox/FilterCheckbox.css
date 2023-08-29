@@ -2,6 +2,12 @@
   margin-top: 34px;
   width: fit-content;
   align-self: flex-start;
+  z-index: 0;
+  transition: z-index 0.5s;
+}
+
+.filter-checkbox_invisible {
+  z-index: -1;
 }
 
 .filter-checkbox__input {
@@ -41,8 +47,8 @@
 
 .filter-checkbox__round {
   position: absolute;
-  top: 2.4px;
-  left: 2px;
+  top: 2.5px;
+  left: 2.5px;
   width: 10px;
   height: 10px;
   background-color: #A0A0A0;
@@ -95,6 +101,6 @@
   }
 
   .filter-checkbox__input:checked + .filter-checkbox__visible-input .filter-checkbox__round {
-    left: 22px;
+    left: 21.5px;
   }
 }

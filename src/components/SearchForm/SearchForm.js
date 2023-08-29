@@ -1,6 +1,6 @@
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
-function SearchForm() {
+function SearchForm({isDropdownMenuOpen}) {
   return (
       <form className="search-form">
         <div className="search-form__container">
@@ -17,7 +17,7 @@ function SearchForm() {
             Найти
           </button>
         </div>
-        <FilterCheckbox />
+        <FilterCheckbox isDropdownMenuOpen={isDropdownMenuOpen} />
       </form>
   );
 }

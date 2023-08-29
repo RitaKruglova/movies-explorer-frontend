@@ -6,10 +6,10 @@ import Portfolio from "../Portfolio/Portfolio";
 import Promo from "../Promo/Promo";
 import Techs from "../Techs/Techs";
 
-function Main() {
+function Main({toggleMenuVisibility, isDropdownMenuOpen}) {
   return (
     <main className="main">
-      <Header modifier=" header_color_blue" isMainPage={true}/>
+      <Header isMainPage={true} toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen}/>
       <Promo />
       <AboutProject />
       <Techs />

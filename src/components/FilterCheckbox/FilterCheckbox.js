@@ -1,6 +1,6 @@
-function FilterCheckbox() {
+function FilterCheckbox({isDropdownMenuOpen}) {
   return (
-    <div className="filter-checkbox">
+    <div className={`filter-checkbox${isDropdownMenuOpen ? " filter-checkbox_invisible" : ""}`}>
       <label className="filter-checkbox__label">
           <input
               className="filter-checkbox__input"

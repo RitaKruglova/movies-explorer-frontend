@@ -69,7 +69,8 @@
   }
 
   .navigation__link_active {
-    text-decoration: underline;
+    border-bottom: 1px solid;
+    padding-bottom: 4px;
   }
 }
 
