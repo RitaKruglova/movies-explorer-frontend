@@ -1,4 +1,4 @@
-function Input(labelText, inputType, idAndForValue, inputValue) {
+function Input({labelText, inputType, idAndForValue, inputValue}) {
   return (
     <div className="field">
       <label className="field__label" for={idAndForValue}>{labelText}</label>
@@ -8,7 +8,7 @@ function Input(labelText, inputType, idAndForValue, inputValue) {
       type={inputType}
       id={idAndForValue}
       />
-      <span className="field__error"></span>
+      <span className="field__error">Что-то пошло не так...</span>
     </div>
   )
 }
