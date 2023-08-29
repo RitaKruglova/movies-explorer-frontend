@@ -7,7 +7,7 @@ function SavedMovies() {
   return (
     <div className="saved-movies">
       <div className="saved-movies__container">
-        <Header />
+        <Header isAccountButtonWhite={true} />
         <SearchForm />
         <MoviesCardList isSavedMoviesPlace={true} />
       </div>

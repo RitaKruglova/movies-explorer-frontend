@@ -12,6 +12,7 @@ function SearchForm() {
           <button
             className="search-form__button"
             type="submit"
+            aria-label="Найти фильмы"
           >
             Найти
           </button>

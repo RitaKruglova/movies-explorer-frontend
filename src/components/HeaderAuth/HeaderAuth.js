@@ -17,6 +17,7 @@ function HeaderAuth() {
         className="header-auth__button"
         type="button"
         onClick={handleRegisterClick}
+        aria-label="Перейти на страницу регистрации"
       >
         Регистрация
       </button>
@@ -24,6 +25,7 @@ function HeaderAuth() {
         className="header-auth__button"
         type="button"
         onClick={handleLoginClick}
+        aria-label="Перейти на страницу авторизации"
       >
         Войти
       </button>
