@@ -6,6 +6,8 @@
   background-image: url(../../images/menu-closed.svg);
   background-position: center;
   opacity: 1;
+  -webkit-transition: background-image 0.5s, opacity 0.5s;
+  -o-transition: background-image 0.5s, opacity 0.5s;
   transition: background-image 0.5s, opacity 0.5s;
 }
 
@@ -42,4 +44,3 @@
     right: -1px;
   }
 }
-

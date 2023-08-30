@@ -1,10 +1,15 @@
 .movies-card-list {
   max-width: 1140px;
   width: 90vw;
+  display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fit, 270px);
+  -webkit-column-gap: 20px;
+  -moz-column-gap: 20px;
   column-gap: 20px;
   row-gap: 38px;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
   justify-content: flex-start;
 }
 
@@ -13,6 +18,8 @@
     max-width: 708px;
     width: 93vw;
     grid-template-columns: repeat(auto-fit, 339px);
+    -webkit-column-gap: 30px;
+    -moz-column-gap: 30px;
     column-gap: 30px;
     row-gap: 30px;
   }

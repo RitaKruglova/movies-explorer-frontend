@@ -2,6 +2,8 @@
   width: 38px;
   height: 38px;
   opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 

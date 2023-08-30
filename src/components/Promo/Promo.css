@@ -2,11 +2,17 @@
   background-color: #073042;
   height: 574px;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
 .promo__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   max-width: 1140px;
   width: 90vw;
@@ -22,6 +28,7 @@
   width: 50vw;
   max-width: 640px;
   color: #FFF;
+  -webkit-font-feature-settings: 'clig' off, 'liga' off;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 4vw;
   font-style: normal;
@@ -33,6 +40,7 @@
 .promo__subtitle {
   width: 310px;
   color: rgba(255, 255, 255, 0.5);
+  -webkit-font-feature-settings: 'clig' off, 'liga' off;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 13px;
   font-style: normal;
@@ -55,8 +63,15 @@
 
   .promo__info {
     margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
 

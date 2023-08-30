@@ -12,12 +12,19 @@
   line-height: normal;
   border-radius: 3px;
   opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 
 .submit-button:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+.submit-button:disabled {
+  color: #C2C2C2;
+  background-color: #F8F8F8;
 }
 
 .submit-button_place_login {

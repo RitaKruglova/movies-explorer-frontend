@@ -2,7 +2,11 @@
   background-color: #F5F5F5;
   height: 625px;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -35,8 +39,12 @@
 .techs__list {
   list-style: none;
   max-width: 690px;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr;
   grid-template-columns: repeat(7, 1fr);
+  -webkit-column-gap: 10px;
+  -moz-column-gap: 10px;
   column-gap: 10px;
   margin: 0 auto 0;
   padding: 0;
@@ -115,6 +123,8 @@
 
   .techs__list {
     padding: 0;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     max-width: 178px;
   }
