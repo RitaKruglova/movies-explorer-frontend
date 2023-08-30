@@ -47,10 +47,13 @@
   padding: 0;
   flex-shrink: 0;
   margin-left: 21px;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 .search-form__button:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 768px) {

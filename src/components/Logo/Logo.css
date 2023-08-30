@@ -1,8 +1,11 @@
 .logo {
   width: 38px;
   height: 38px;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 .logo:hover {
   cursor: pointer;
+  opacity: 0.8;
 }

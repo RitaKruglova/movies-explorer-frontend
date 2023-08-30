@@ -10,10 +10,13 @@
   border: 1px solid white;
   border-radius: 3px;
   padding: 0;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 .navtab:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 540px) {

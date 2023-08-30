@@ -46,10 +46,13 @@
   border: none;
   transition: background-image 0.2s linear;
   padding: 0;
+  opacity: 1;
+  transition: opacity 0.5s;
 }
 
 .movies-card__button:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .movies-card__button_active {

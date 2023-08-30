@@ -43,6 +43,12 @@
   align-items: center;
   transition: background-color 0.5s linear;
   margin: 0 14px 0 0;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.filter-checkbox__visible-input:hover {
+  opacity: 0.8;
 }
 
 .filter-checkbox__round {
@@ -64,6 +70,14 @@
 .filter-checkbox__input:checked + .filter-checkbox__visible-input .filter-checkbox__round {
   background-color: white;
   left: 24px;
+}
+
+.filter-checkbox__input:disabled + .filter-checkbox__visible-input {
+  background-color: #C4C4C4;
+}
+
+.filter-checkbox__input:disabled + .filter-checkbox__visible-input .filter-checkbox__round {
+  background-color: #F5F5F5;
 }
 
 @media screen and (max-width: 768px) {

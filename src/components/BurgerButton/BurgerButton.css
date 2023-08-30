@@ -1,12 +1,17 @@
 .burger-button {
   width: 44px;
   height: 44px;
-  cursor: pointer;
   background-color: transparent;
   z-index: 1;
   background-image: url(../../images/menu-closed.svg);
   background-position: center;
-  transition: background-image 0.5s;
+  opacity: 1;
+  transition: background-image 0.5s, opacity 0.5s;
+}
+
+.burger-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .burger-button_opened {
