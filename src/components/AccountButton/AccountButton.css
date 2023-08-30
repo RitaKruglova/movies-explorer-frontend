@@ -1,11 +1,18 @@
 .account-button {
   width: 100px;
   height: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   background-color: #2BE080;
   border-radius: 40px;
+  -webkit-font-feature-settings: 'clig' off, 'liga' off;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 13px;
   font-style: normal;
@@ -15,6 +22,8 @@
   font-feature-settings: 'clig' off, 'liga' off;
   border: none;
   opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 
@@ -23,8 +32,14 @@
   background-color: white;
   width: 26px;
   height: 26px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -35,6 +50,7 @@
 
 .account-button_color_white {
   background-color: white;
+  -webkit-box-shadow: 3px 5px 6px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 3px 5px 6px 5px rgba(0, 0, 0, 0.1);
 }
 

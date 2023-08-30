@@ -1,12 +1,18 @@
 import { useState } from "react";
 import Header from "../Header/Header";
 import SubmitButton from "../SubmitButton/SubmitButton";
+import { useNavigate } from "react-router-dom";
 
 function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
+  const navigate = useNavigate();
   const [isEditingAvailable, setEditingAvailable] = useState(false);
 
   function allowEditing() {
     setEditingAvailable(true);
+  }
+
+  function handleSignoutClick() {
+    navigate('/register');
   }
 
   return (
@@ -18,11 +24,11 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
           <form className="profile__form">
             <div className="profile__input-container">
               <label className="profile__label" for="name-input-profile">Имя</label>
-              <input className="profile__input" id="name-input-profile" value="Рита" disabled={!isEditingAvailable}/>
+              <input className="profile__input" id="name-input-profile" value="Рита" disabled={!isEditingAvailable} placeholder="Имя" />
             </div>
             <div className="profile__input-container">
               <label className="profile__label" for="email-input-profile">E-mail</label>
-              <input className="profile__input" id="email-input-profile" value="kruglova404@yandex.ru" disabled={!isEditingAvailable}/>
+              <input className="profile__input" id="email-input-profile" value="kruglova404@yandex.ru" disabled={!isEditingAvailable} placeholder="E-mail"/>
             </div>
             <div className="profile__button-container">
               {!isEditingAvailable
@@ -40,6 +46,7 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
                     className="profile__button profile__button_type_signout"
                     type="button"
                     aria-label="Выйти из аккаунта"
+                    onClick={handleSignoutClick}
                   >
                     Выйти из аккаунта
                   </button>

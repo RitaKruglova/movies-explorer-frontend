@@ -1,9 +1,16 @@
 .show-more-button {
   width: 320px;
   height: 36px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-negative: 0;
   flex-shrink: 0;
   background-color: #F9F9F9;
   border-radius: 6px;
@@ -15,6 +22,8 @@
   font-weight: 500;
   line-height: normal;
   opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 

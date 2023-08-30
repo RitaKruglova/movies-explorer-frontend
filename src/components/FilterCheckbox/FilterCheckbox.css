@@ -1,8 +1,13 @@
 .filter-checkbox {
   margin-top: 34px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
+  -ms-flex-item-align: start;
   align-self: flex-start;
   z-index: 0;
+  -webkit-transition: z-index 0.5s;
+  -o-transition: z-index 0.5s;
   transition: z-index 0.5s;
 }
 
@@ -15,6 +20,7 @@
   width: 1px;
   height: 1px;
   overflow: hidden;
+  -webkit-clip-path: inset(0 0 0 0);
   clip-path: inset(0 0 0 0);
   top: 7px;
   right: 7px;
@@ -22,6 +28,8 @@
 
 .filter-checkbox__label {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-size: 13px;
   font-style: normal;
@@ -39,11 +47,19 @@
   height: 15px;
   border-radius: 20px;
   background-color: #343434;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-transition: background-color 0.5s linear;
+  -o-transition: background-color 0.5s linear;
   transition: background-color 0.5s linear;
   margin: 0 14px 0 0;
   opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 
@@ -60,6 +76,8 @@
   background-color: #A0A0A0;
   border-radius: 50px;
   margin: 0;
+  -webkit-transition: background-color 0.5s linear, left 0.3s linear;
+  -o-transition: background-color 0.5s linear, left 0.3s linear;
   transition: background-color 0.5s linear, left 0.3s linear;
 }
 
@@ -82,11 +100,15 @@
 
 @media screen and (max-width: 768px) {
   .filter-checkbox {
+    -ms-flex-item-align: end;
     align-self: flex-end;
     margin-top: 31px;
   }
 
   .filter-checkbox__label {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
   }
 
@@ -97,6 +119,8 @@
 
 @media screen and (max-width: 500px) {
   .filter-checkbox {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
     align-self: center;
   }
 }

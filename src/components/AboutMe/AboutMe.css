@@ -1,6 +1,10 @@
 .about-me {
   background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -12,7 +16,11 @@
 .about-me__info {
   max-width: 1140px;
   margin: 66px 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
 }
 
@@ -28,6 +36,7 @@
 
 .about-me__profession {
   max-width: 600px;
+  -webkit-font-feature-settings: 'clig' off, 'liga' off;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 18px;
   font-style: normal;
@@ -38,6 +47,7 @@
 
 .about-me__story {
   max-width: 600px;
+  -webkit-font-feature-settings: 'clig' off, 'liga' off;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 14px;
   font-style: normal;
@@ -54,6 +64,8 @@
   line-height: normal;
   color: black;
   opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 
@@ -113,8 +125,13 @@
   }
 
   .about-me__info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
     flex-direction: column-reverse;
     margin: 60px 0 0;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
   }
 

@@ -3,8 +3,15 @@
   max-width: 1140px;
   width: 89vw;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -12,7 +19,11 @@
   margin: 44px 0 20px;
   border-bottom: 1px solid #E8E8E8;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 
@@ -20,6 +31,7 @@
   margin: 0;
   padding-bottom: 20px;
   color: #A0A0A0;
+  -webkit-font-feature-settings: 'clig' off, 'liga' off;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 13px;
   font-style: normal;
@@ -28,13 +40,18 @@
 }
 
 .footer__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 20px;
 }
 
 .footer__date {
+  -webkit-font-feature-settings: 'clig' off, 'liga' off;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 13px;
   font-style: normal;
@@ -44,6 +61,8 @@
 }
 
 .footer__references-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   list-style: none;
   margin: 0;
@@ -54,6 +73,7 @@
 }
 
 .footer__platform {
+  -webkit-font-feature-settings: 'clig' off, 'liga' off;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 13px;
   font-style: normal;
@@ -63,6 +83,8 @@
   text-decoration: none;
   color: black;
   opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 
@@ -75,50 +97,5 @@
     width: 92vw;
     max-width: 708px;
     height: 137px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .footer {
-    height: 203px;
-    width: 94vw;
-    max-width: 480px;
-  }
-
-  .footer__title-container {
-    margin: 30px 0 27px;
-  }
-
-  .footer__title {
-    font-size: 12px;
-  }
-
-  .footer__info {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-
-  .footer__references-container {
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-    padding: 0;
-  }
-
-  .footer__platform {
-    font-size: 12px;
-  }
-
-  .footer__list-item:first-of-type {
-    margin: 0 0 9px;
-  }
-
-  .footer__platform:first-of-type {
-    margin-right: 0;
-    margin-bottom: 12px;
-  }
-
-  .footer__date {
-    font-size: 12px;
   }
 }
