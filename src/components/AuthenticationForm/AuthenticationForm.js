@@ -1,6 +1,7 @@
 import Logo from "../Logo/Logo";
 import Input from "../Input/Input";
 import AuthorizationPrompt from "../AuthorizationPrompt/AuthorizationPrompt";
+import SubmitButton from "../SubmitButton/SubmitButton";
 
 function AuthenticationForm({isRegisterPlace, titleText}) {
   return (
@@ -14,12 +15,7 @@ function AuthenticationForm({isRegisterPlace, titleText}) {
         <Input labelText="E-mail" inputType="email" idAndForValue="email-input-auth" inputValue="kruglova404@yandex.ru" />
         <Input labelText="Пароль" inputType="password" idAndForValue="password-input-auth" inputValue="123456789" />
         <div className="authentication__button-container">
-          <button
-            type="submit"
-            className={`authentication__button${isRegisterPlace ? "" : " authentication__button_place_login"}`}
-          >
-            {isRegisterPlace ? "Зарегистрироваться" : "Войти"}
-          </button>
+          <SubmitButton buttonText={isRegisterPlace ? "Зарегистрироваться" : "Войти"} buttonClass={isRegisterPlace ? "" : " submit-button_place_login"} />
           {isRegisterPlace
             ?
               <AuthorizationPrompt paragraphText="Уже зарегистрированы?" linkPath="/signin" linkText="Войти" />

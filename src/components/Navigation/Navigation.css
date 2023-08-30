@@ -12,6 +12,12 @@
   font-weight: 400;
   line-height: 18px;
   text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.navigation__link:hover {
+  opacity: 0.7;
 }
 
 .navigation__link_active {

@@ -17,29 +17,6 @@
   width: 100%;
 }
 
-.authentication__button {
-  padding: 0;
-  margin: 128px 0 16px;
-  width: 100%;
-  height: 45px;
-  background-color: #3456F3;
-  border: none;
-  color: white;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  border-radius: 3px;
-}
-
-.authentication__button:hover {
-  cursor: pointer;
-}
-
-.authentication__button_place_login {
-  margin: 198px 0 16px;
-}
-
 @media screen and (max-width: 500px) {
   .authentication {
     width: 260px;

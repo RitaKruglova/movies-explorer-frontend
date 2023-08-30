@@ -51,6 +51,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 0 19px;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.portfolio__link:hover {
+  opacity: 0.7;
 }
 
 .portfolio__links:last-child {

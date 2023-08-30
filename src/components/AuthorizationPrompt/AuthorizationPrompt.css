@@ -20,6 +20,12 @@
   font-weight: 400;
   line-height: normal;
   text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.authorization-prompt__link:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 500px) {

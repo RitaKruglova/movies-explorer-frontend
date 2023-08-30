@@ -6,6 +6,7 @@ function FilterCheckbox({isDropdownMenuOpen}) {
               className="filter-checkbox__input"
               type="checkbox"
               id="short-films"
+              // disabled
           />
           <div className="filter-checkbox__visible-input">
             <span className="filter-checkbox__round" />
