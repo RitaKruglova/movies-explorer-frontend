@@ -4,13 +4,6 @@
   margin: 75px 0 auto auto;
 }
 
-@media screen and (max-width: 1040px) {
-  .globe-img {
-    width: 210px;
-    margin: 32px 50px auto auto;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .globe-img {
     display: block;
