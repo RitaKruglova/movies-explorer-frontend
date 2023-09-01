@@ -8,15 +8,17 @@ import Techs from "../Techs/Techs";
 
 function Main({toggleMenuVisibility, isDropdownMenuOpen}) {
   return (
-    <main className="main">
+    <>
       <Header isMainPage={true} toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen}/>
-      <Promo />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
-      <Portfolio />
+        <main className="main">
+          <Promo />
+          <AboutProject />
+          <Techs />
+          <AboutMe />
+          <Portfolio />
+        </main>
       <Footer />
-    </main>
+    </>
   )
 }
 
