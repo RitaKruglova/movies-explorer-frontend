@@ -11,6 +11,7 @@ function AuthenticationInput({isProfilePlace, isEditingAvailable, forAndIdValue,
         disabled={!isEditingAvailable}
         onChange={handleChange}
         name={inputName}
+        required
       />
       {!isProfilePlace
         &&
