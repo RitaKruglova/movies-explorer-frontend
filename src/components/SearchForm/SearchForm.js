@@ -8,6 +8,7 @@ function SearchForm({isDropdownMenuOpen}) {
             className="search-form__input"
             type="text"
             placeholder="Фильм"
+            required
           />
           <button
             className="search-form__button"
