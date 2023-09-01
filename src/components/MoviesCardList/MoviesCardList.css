@@ -22,6 +22,9 @@
     -moz-column-gap: 30px;
     column-gap: 30px;
     row-gap: 30px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
   }
 }
 
