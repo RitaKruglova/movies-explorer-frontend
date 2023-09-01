@@ -2,7 +2,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 49px 0 0;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -22,6 +21,12 @@
   line-height: 16px;
   text-decoration: none;
   text-align: center;
+  transition: opacity 0.5s;
+}
+
+.header-auth__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .header-auth__button:first-of-type {
@@ -31,16 +36,7 @@
   background-color: #073042;
 }
 
-@media screen and (max-width: 786px) {
-  .header-auth {
-    margin: 0 13px 0 0;
-  }
-}
-
 @media screen and (max-width: 500px) {
-  .header-auth {
-
-  }
   .header-auth__button {
     width: 54px;
     height: 26px;

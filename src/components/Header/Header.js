@@ -7,7 +7,7 @@ import DropdownMenu from "../DropdownMenu/DropdownMenu";
 import HeaderAuth from "../HeaderAuth/HeaderAuth";
 
 function Header({isMainPage = false, isAccountButtonWhite = false, toggleMenuVisibility, isDropdownMenuOpen}) {
-  const [isAuthorized, setIsAuthorized] = useState(true);
+  const [isAuthorized, setIsAuthorized] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
