@@ -19,4 +19,6 @@ git@github.com:RitaKruglova/movies-explorer-frontend.git
 ```
 2. Установить MongoDB.
 3. Ввести в терминале npm run start
+## Ссылка на макет
+https://www.figma.com/file/pjXybhYbt3b35dq3VfwzFl/light-1-(Copy)?node-id=41056%3A8365&mode=dev
 
