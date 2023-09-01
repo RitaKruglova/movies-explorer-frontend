@@ -12,7 +12,7 @@
 
 .about-project__container {
   max-width: 1140px;
-  width: 87vw;
+  width: 89vw;
 }
 
 .about-project__description {
@@ -101,6 +101,10 @@
 @media screen and (max-width: 768px) {
   .about-project {
     height: 585px;
+  }
+
+  .about-project__container {
+    width: 87vw;
   }
 
   .about-project__description {
