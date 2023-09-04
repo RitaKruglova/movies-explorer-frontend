@@ -5,14 +5,16 @@ import SearchForm from "../SearchForm/SearchForm";
 
 function SavedMovies({toggleMenuVisibility, isDropdownMenuOpen}) {
   return (
-    <div className="saved-movies">
-      <div className="saved-movies__container">
-        <Header isAccountButtonWhite={true} toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen}/>
-        <SearchForm isDropdownMenuOpen={isDropdownMenuOpen} />
-        <MoviesCardList isSavedMoviesPlace={true} />
+    <>
+      <Header isAccountButtonWhite={true} toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen}/>
+      <div className="saved-movies">
+        <div className="saved-movies__container">
+          <SearchForm isDropdownMenuOpen={isDropdownMenuOpen} />
+          <MoviesCardList isSavedMoviesPlace={true} />
+        </div>
       </div>
       <Footer />
-    </div>
+    </>
   )
 }
 
