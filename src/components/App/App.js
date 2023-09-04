@@ -7,8 +7,10 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFound from '../NotFound/NotFound';
+import ProtectedRoute from '../ProtectedRoute';
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
   function toggleMenuVisibility() {
@@ -24,12 +26,56 @@ function App() {
   return (
     <div className="page">
       <Routes>
-        <Route path="/" element={<Main toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen} />} />
-        <Route path="/movies" element={<Movies toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen} />} />
-        <Route path="/saved-movies" element={<SavedMovies toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen} />} />
-        <Route path="/profile" element={<Profile toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen} />} />
-        <Route path="/signup" element={<Register />} />
-        <Route path="/signin" element={<Login />} />
+        <Route path="/"
+          element={
+            <Main
+              toggleMenuVisibility={toggleMenuVisibility}
+              isDropdownMenuOpen={isDropdownMenuOpen}
+            />
+          }
+        />
+        <Route
+          path="/movies"
+          element={
+            <ProtectedRoute
+              toggleMenuVisibility={toggleMenuVisibility}
+              isDropdownMenuOpen={isDropdownMenuOpen}
+              element={Movies}
+            />
+          }
+        />
+        <Route
+          path="/saved-movies"
+          element={
+            <ProtectedRoute
+              toggleMenuVisibility={toggleMenuVisibility}
+              isDropdownMenuOpen={isDropdownMenuOpen}
+              element={SavedMovies}
+            />
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute
+              toggleMenuVisibility={toggleMenuVisibility}
+              isDropdownMenuOpen={isDropdownMenuOpen}
+              element={Profile}
+            />
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <Register />
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            <Login />
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
