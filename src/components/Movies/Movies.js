@@ -10,16 +10,18 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen}) {
   const [isLoading, setIsLoading] = useState(false);
 
   return (
-    <div className="movies">
-      {isLoading && <Preloader />}
-      <div className="movies__container">
-        <Header isAccountButtonWhite={true} toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen}/>
-        <SearchForm isDropdownMenuOpen={isDropdownMenuOpen} />
-        <MoviesCardList />
-        <ShowMoreButton />
+    <>
+      <Header isAccountButtonWhite={true} toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen}/>
+      <div className="movies">
+        {isLoading && <Preloader />}
+        <div className="movies__container">
+          <SearchForm isDropdownMenuOpen={isDropdownMenuOpen} />
+          <MoviesCardList />
+          <ShowMoreButton />
+        </div>
       </div>
       <Footer />
-    </div>
+    </>
   )
 }
 
