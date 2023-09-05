@@ -11,9 +11,14 @@ export function validateEmail(value) {
 export function validateText(value) {
   if (value.length < 2 && value.length > 30) {
     return 'Текст должен быть не короче 2 символов и не длиннее 30 символов';
-  } else {
-    return '';
   }
+  if (!value) {
+    return 'Имя обязательно';
+  }
+  if (!/[a-zA-Zа-яА-ЯёЁ\s-]+/.test(value)) {
+    return 'Имя должно только латиницу, кириллицу, пробелы, дефисы';
+  }
+  return '';
 }
 
 export function validatePassword(value) {

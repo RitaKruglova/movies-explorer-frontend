@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthenticationInput from "../AuthenticationInput/AuthenticationInput";
 
-function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonText, values, errors, handleChange, isValidForm}) {
+function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonText, values, errors, handleChange, isValidForm, mainErrorText, handleSubmit}) {
   const navigate = useNavigate();
   const [isEditingAvailable, setIsEditingAvailable] = useState(false);
 
@@ -21,7 +21,10 @@ function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonT
     <div className={`authentication${isProfilePlace ? " authentication_place_profile" : ""}`}>
       {!isProfilePlace && <Logo />}
       <h2 className={`authentication__title${isProfilePlace ? " authentication__title_place_profile" : ""}`}>{titleText}</h2>
-      <form className={`authentication__form${isProfilePlace ? " authentication__form_place_profile" : ""}`}>
+      <form
+        className={`authentication__form${isProfilePlace ? " authentication__form_place_profile" : ""}`}
+        onSubmit={handleSubmit}
+      >
         <div className="authentication__container">
           {(isRegisterPlace || isProfilePlace) &&
             <AuthenticationInput
@@ -84,7 +87,7 @@ function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonT
             </div>
           :
           <div className={`authentication__button-container${isProfilePlace ? " authentication__button-container_place_profile" : ""}${isRegisterPlace ? " authentication__button-container_place_register" : ""}`}>
-            <span className="authentication__main-error">При обновлении профиля произошла ошибка.</span>
+            <span className="authentication__main-error">{mainErrorText}</span>
             <button
               type="submit"
               className={`authentication__submit-button${isProfilePlace ? " authentication__submit-button_place_profile" : ""}${isRegisterPlace ? " authentication__submit-button_place_register" : ""}`}
