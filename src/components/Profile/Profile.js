@@ -6,6 +6,7 @@ import { mainApi } from "../../utils/MainApi";
 
 function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const [mainErrorText, setMainErrorText] = useState('');
   const NAME = 'name';
   const EMAIL = 'email';
   const [values, setValues] = useState({
@@ -38,7 +39,11 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
         setCurrentUser(data);
       })
       .catch(err => {
-        console.log(err);
+        if (err.statusCode === 400) {
+          setMainErrorText('Пользователь с таким email уже существует.');
+        } else {
+          setMainErrorText('При обновлении профиля произошла ошибка.');
+        }
       })
   }
 

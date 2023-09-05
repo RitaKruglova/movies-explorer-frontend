@@ -78,6 +78,13 @@
   opacity: 0.8;
 }
 
+.search-form__error {
+  margin-top: 5px;
+  min-height: 15px;
+  font-size: 14px;
+  color: #FF3055;
+}
+
 @media screen and (max-width: 768px) {
   .search-form {
     height: 227px;

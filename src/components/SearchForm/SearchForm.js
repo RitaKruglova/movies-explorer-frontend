@@ -18,6 +18,7 @@ function SearchForm({isDropdownMenuOpen}) {
             Найти
           </button>
         </div>
+        <span className="search-form__error"></span>
         <FilterCheckbox isDropdownMenuOpen={isDropdownMenuOpen} />
       </form>
   );
