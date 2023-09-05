@@ -1,8 +1,13 @@
 import { validateText, validateEmail, validatePassword } from '../../utils/validation';
 import AuthenticationForm from '../AuthenticationForm/AuthenticationForm';
 import useValidate from '../../hooks/useValidate';
+import { register } from '../../utils/auth';
+import { useNavigate } from 'react-router';
+import { useState } from 'react';
 
 function Register() {
+  const [mainErrorText, setMainErrorText] = useState('');
+  const navigate = useNavigate();
   const NAME = 'name';
   const EMAIL = 'email';
   const PASSWORD = 'password';
@@ -34,6 +39,20 @@ function Register() {
     [PASSWORD]: ''
   }, getErrorsByValues);
 
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    register(values[NAME], values[EMAIL], values[PASSWORD])
+      .then(() => navigate('/signin', {replace: true}))
+      .catch(err => {
+        if (err.statusCode === 400) {
+          setMainErrorText('Пользователь с таким email уже существует.');
+        } else {
+          setMainErrorText('При регистрации пользователя произошла ошибка.');
+        }
+      })
+  }
+
   return (
     <section className="register">
       <AuthenticationForm
@@ -45,6 +64,8 @@ function Register() {
         errors={errors}
         handleChange={handleChange}
         isValidForm={isValidForm}
+        mainErrorText={mainErrorText}
+        handleSubmit={handleSubmit}
       />
     </section>
   )
