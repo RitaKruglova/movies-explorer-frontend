@@ -44,10 +44,10 @@ function Login() {
 
     login(values[EMAIL], values[PASSWORD])
       .then((data) => {
-        setLoggedIn(true);
         mainApi.getCurrentUser()
           .then(data => {
             setCurrentUser(data);
+            setLoggedIn(true);
             navigate('/movies', {replace: true});
           })
           .catch(err => {
@@ -58,8 +58,10 @@ function Login() {
         console.log(err)
         if (err.statusCode === 400) {
           setMainErrorText('Вы ввели неправильный логин или пароль.')
+        } else if (err.statusCode === 401) {
+          setMainErrorText(' При авторизации произошла ошибка. Токен не передан или передан не в том формате.')
         } else {
-          setMainErrorText('При авторизации произошла ошибка.')
+          setMainErrorText('При авторизации произошла ошибка. Переданный токен некорректен.')
         }
       })
   }

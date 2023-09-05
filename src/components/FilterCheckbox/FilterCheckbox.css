@@ -44,7 +44,7 @@
 .filter-checkbox__visible-input {
   position: relative;
   width: 36px;
-  height: 15px;
+  height: 16px;
   border-radius: 20px;
   background-color: #343434;
   display: -webkit-box;
@@ -70,7 +70,7 @@
 .filter-checkbox__round {
   position: absolute;
   top: 2.5px;
-  left: 2.5px;
+  left: 3px;
   width: 10px;
   height: 10px;
   background-color: #A0A0A0;
@@ -87,7 +87,7 @@
 
 .filter-checkbox__input:checked + .filter-checkbox__visible-input .filter-checkbox__round {
   background-color: white;
-  left: 24px;
+  left: 23px;
 }
 
 .filter-checkbox__input:disabled + .filter-checkbox__visible-input {

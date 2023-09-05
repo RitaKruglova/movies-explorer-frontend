@@ -1,21 +1,45 @@
 import Header from "../Header/Header";
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { mainApi } from "../../utils/MainApi";
 
 function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const NAME = 'name';
   const EMAIL = 'email';
-
   const [values, setValues] = useState({
-    [NAME]: 'Рита',
-    [EMAIL]: 'kruglova404@yandex.ru'
-  })
-  
+    [NAME]: currentUser.name,
+    [EMAIL]: currentUser.email
+  });
+
   function handleChange(event) {
     setValues({
       ...values,
       [event.target.name]: event.target.value
     });
+  }
+
+  useEffect(() => {
+    setValues({
+      [NAME]: currentUser.name,
+      [EMAIL]: currentUser.email
+    })
+  }, [currentUser]);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    mainApi.changeUserInfo({
+      [NAME]: values.name,
+      [EMAIL]: values.email
+    })
+      .then(data => {
+        setCurrentUser(data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   return (
@@ -25,12 +49,13 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
         <AuthenticationForm
           isRegisterPlace={false}
           isProfilePlace={true}
-          titleText="Привет, Рита"
+          titleText={`Привет, ${currentUser.name}`}
           buttonText="Сохранить"
           values={values}
           errors={{}}
           handleChange={handleChange}
           isValidForm={true}
+          handleSubmit={handleSubmit}
         />
       </section>
     </>
