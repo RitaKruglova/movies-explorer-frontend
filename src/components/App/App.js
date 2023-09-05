@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -10,11 +10,30 @@ import NotFound from '../NotFound/NotFound';
 import ProtectedRoute from '../ProtectedRoute';
 import { LoggedInContext } from '../../contexts/LoggedInContext';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { mainApi } from '../../utils/MainApi';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    checkToken();
+  }, [])
+
+  function checkToken() {
+    mainApi.getCurrentUser()
+      .then(res => {
+        if (res) {
+          setCurrentUser(res);
+          setLoggedIn(true);
+        }
+      })
+      .catch(() => {
+        setCurrentUser({});
+        setLoggedIn(false);
+      });
+  }
 
   function toggleMenuVisibility() {
     setIsDropdownMenuOpen(!isDropdownMenuOpen);

@@ -1,6 +1,6 @@
 import Logo from "../Logo/Logo";
 import AuthorizationPrompt from "../AuthorizationPrompt/AuthorizationPrompt";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthenticationInput from "../AuthenticationInput/AuthenticationInput";
 
@@ -33,7 +33,7 @@ function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonT
               forAndIdValue="name"
               placeholderValue="Имя"
               inputType="text"
-              inputValue={values.name}
+              inputValue={values.name || ''}
               errorValue={errors.name}
               handleChange={handleChange}
               inputName="name"
@@ -45,7 +45,7 @@ function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonT
             forAndIdValue="email"
             placeholderValue="E-mail"
             inputType="email"
-            inputValue={values.email}
+            inputValue={values.email || ''}
             errorValue={errors.email}
             handleChange={handleChange}
             inputName="email"

@@ -22,6 +22,15 @@ class MainApi {
   getCurrentUser() {
     return this._fetch('/users/me');
   }
+
+  changeUserInfo({name, email}) {
+    return this._fetch('/users/me', 'PATCH',
+      JSON.stringify({
+        name,
+        email
+      })
+    )
+  }
 }
 
 const mainApi = new MainApi({
