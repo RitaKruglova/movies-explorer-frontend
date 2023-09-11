@@ -52,7 +52,7 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen}) {
       
     moviesApi.getAllMovies()
       .then(data => {
-
+        console.log(data)
         if (isShort) {
           data = data.filter(movie => movie.duration <= 40);
         }
