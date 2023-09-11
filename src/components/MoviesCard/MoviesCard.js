@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import movieCover from '../../images/cover.jpg';
 
-function MoviesCard({isSavedMoviesPlace = false}) {
+function MoviesCard({isSavedMoviesPlace = false, name, image, trailerLink, duration}) {
   const [isLiked, setIsLiked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -24,9 +23,11 @@ function MoviesCard({isSavedMoviesPlace = false}) {
       onMouseLeave={handleMouseLeave}
     >
       <div className="movies-card__container">
-        <img className="movies-card__image" src={movieCover} alt="Постер фильма" />
+        <a className="movie-card__trailer-link" href={trailerLink} target="blank">
+          <img className="movies-card__image" src={image} alt="Постер фильма" />
+        </a>
         <div className="movies-card__info">
-          <h2 className="movies-card__title">Твоё имя</h2>
+          <h2 className="movies-card__title">{name}</h2>
           {isSavedMoviesPlace
             ?
             <button
@@ -45,7 +46,7 @@ function MoviesCard({isSavedMoviesPlace = false}) {
           }
         </div>
       </div>
-      <p className="movies-card__duration">1ч50м</p>
+      <p className="movies-card__duration">{duration}</p>
     </article>
   )
 }

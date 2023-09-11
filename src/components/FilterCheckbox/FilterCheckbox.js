@@ -1,4 +1,4 @@
-function FilterCheckbox({isDropdownMenuOpen}) {
+function FilterCheckbox({isDropdownMenuOpen, handleCheckboxChange, isShort}) {
   return (
     <div className={`filter-checkbox${isDropdownMenuOpen ? " filter-checkbox_invisible" : ""}`}>
       <label className="filter-checkbox__label">
@@ -6,6 +6,8 @@ function FilterCheckbox({isDropdownMenuOpen}) {
               className="filter-checkbox__input"
               type="checkbox"
               id="short-films"
+              onChange={handleCheckboxChange}
+              checked={isShort}
               // disabled
           />
           <div className="filter-checkbox__visible-input">

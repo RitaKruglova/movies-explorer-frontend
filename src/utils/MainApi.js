@@ -3,7 +3,7 @@ import { checkResponse } from "./utils";
 const { REACT_APP_BACKEND_URL = 'http://localhost:3000' } = process.env;
 
 class MainApi {
-  constructor({baseUrl, headers}) {
+  constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
   }
