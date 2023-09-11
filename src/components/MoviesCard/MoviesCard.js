@@ -1,11 +1,35 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { mainApi } from '../../utils/MainApi';
 
-function MoviesCard({isSavedMoviesPlace = false, name, image, trailerLink, duration}) {
+function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies}) {
   const [isLiked, setIsLiked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
+  useEffect(() => {
+    const foundLikedMovie = likedMovies.find(likedMovie => likedMovie.movieId === movie.id);
+    
+    if (foundLikedMovie) {
+      movie._id = foundLikedMovie._id;
+      setIsLiked(true);
+    }
+  }, [likedMovies]);
+
   function handleLikeClick() {
-    setIsLiked(!isLiked);
+    console.log(movie)
+    if (!isLiked) {
+      mainApi.createMovie(movie)
+        .then((likedMovie) => {
+          movie._id = likedMovie._id;
+          setIsLiked(true);
+        })
+        .catch(err => console.log(err));
+    } else {
+      mainApi.deleteMovie(movie._id)
+        .then(() => {
+          setIsLiked(false);
+        })
+        .catch(err => console.log(err))
+    }
   }
 
   function handleMouseEnter() {
@@ -23,11 +47,11 @@ function MoviesCard({isSavedMoviesPlace = false, name, image, trailerLink, durat
       onMouseLeave={handleMouseLeave}
     >
       <div className="movies-card__container">
-        <a className="movie-card__trailer-link" href={trailerLink} target="blank">
-          <img className="movies-card__image" src={image} alt="Постер фильма" />
+        <a className="movie-card__trailer-link" href={movie.trailerLink} target="blank">
+          <img className="movies-card__image" src={`https://api.nomoreparties.co${movie.image.url}`} alt="Постер фильма" />
         </a>
         <div className="movies-card__info">
-          <h2 className="movies-card__title">{name}</h2>
+          <h2 className="movies-card__title">{movie.nameRU}</h2>
           {isSavedMoviesPlace
             ?
             <button
