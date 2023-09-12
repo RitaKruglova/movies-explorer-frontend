@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { mainApi } from '../../utils/MainApi';
 
-function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies}) {
+function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies, handleMovieDelete }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -15,7 +15,6 @@ function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies}) 
   }, [likedMovies]);
 
   function handleLikeClick() {
-    console.log(movie)
     if (!isLiked) {
       mainApi.createMovie(movie)
         .then((likedMovie) => {
@@ -40,6 +39,14 @@ function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies}) 
     setIsHovered(false);
   }
 
+  function handleDeleteMovie() {
+    mainApi.deleteMovie(movie._id)
+      .then(() => {
+        handleMovieDelete(movie._id)
+      })
+      .catch(err => console.log(err))
+  }
+
   return(
     <article
       className="movies-card"
@@ -48,7 +55,7 @@ function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies}) 
     >
       <div className="movies-card__container">
         <a className="movie-card__trailer-link" href={movie.trailerLink} target="blank">
-          <img className="movies-card__image" src={`https://api.nomoreparties.co${movie.image.url}`} alt="Постер фильма" />
+          <img className="movies-card__image" src={isSavedMoviesPlace ? movie.image : `https://api.nomoreparties.co/${movie.image.url}`} alt="Постер фильма" />
         </a>
         <div className="movies-card__info">
           <h2 className="movies-card__title">{movie.nameRU}</h2>
@@ -57,8 +64,8 @@ function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies}) 
             <button
               className={`movies-card__button movies-card__button_place_saved-movies${isHovered ? " movies-card__button_visible" : ""}`}
               type="button"
-              onClick={handleLikeClick}
-              aria-label="Поставить или убрать лайк"
+              onClick={handleDeleteMovie}
+              aria-label="Удалить фильм"
             />
             :
             <button
