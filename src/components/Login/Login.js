@@ -55,7 +55,6 @@ function Login() {
           })
       })
       .catch(err => {
-        console.log(err)
         if (err.statusCode === 400) {
           setMainErrorText('Вы ввели неправильный логин или пароль.')
         } else if (err.statusCode === 401) {

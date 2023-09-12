@@ -1,4 +1,11 @@
 .movies-card-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movies-card-list__container {
   max-width: 1140px;
   width: 90vw;
   display: -ms-grid;
@@ -14,7 +21,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .movies-card-list {
+  .movies-card-list__container {
     max-width: 708px;
     width: 93vw;
     grid-template-columns: repeat(auto-fit, 339px);
@@ -29,7 +36,7 @@
 }
 
 @media screen and (max-width: 500px) {
-  .movies-card-list {
+  .movies-card-list__container {
     grid-template-columns: repeat(auto-fit, 300px);
     row-gap: 32px;
   }
