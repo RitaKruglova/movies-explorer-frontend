@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useValidate from '../../hooks/useValidate';
 import { login } from '../../utils/auth';
 import { validateEmail, validatePassword } from '../../utils/validation';

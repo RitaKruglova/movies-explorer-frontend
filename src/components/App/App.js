@@ -14,13 +14,9 @@ import { mainApi } from '../../utils/MainApi';
 import { moviesApi } from '../../utils/MoviesApi';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(document.cookie.includes('token'));
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-
-  useEffect(() => {
-    checkToken();
-  }, [])
 
   function checkToken() {
     mainApi.getCurrentUser()
@@ -35,6 +31,11 @@ function App() {
         setLoggedIn(false);
       });
   }
+
+  useEffect(() => {
+    checkToken();
+  }, [])
+
 
   function toggleMenuVisibility() {
     setIsDropdownMenuOpen(!isDropdownMenuOpen);
@@ -71,7 +72,6 @@ function App() {
 
   function handleSearchFormSubmit(event, states) {
     event.preventDefault();
-    console.log(states.searchInputValue);
     if (!states.searchInputValue) {
       states.setErrorText('Нужно ввести ключевое слово');
     } else {

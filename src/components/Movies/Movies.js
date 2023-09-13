@@ -11,6 +11,7 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchFormSubmi
   const [errorText, setErrorText] = useState('');
   const [foundMovies, setFoundMovies] = useState([]);
   const [isShort, setIsShort] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   function handleChange(event) {
     setSearchInputValue(event.target.value);
@@ -49,6 +50,7 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchFormSubmi
       isSavedMoviesPlace,
       setFoundMovies,
     })
+    setIsSubmitted(true);
   }
 
   return (
@@ -69,6 +71,7 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchFormSubmi
           <MoviesCardList
             foundMovies={foundMovies}
             isSavedMoviesPlace={false}
+            isSubmitted={isSubmitted}
           />
         </div>
       </div>
