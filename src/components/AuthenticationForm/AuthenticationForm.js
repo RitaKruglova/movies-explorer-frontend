@@ -1,12 +1,17 @@
 import Logo from "../Logo/Logo";
 import AuthorizationPrompt from "../AuthorizationPrompt/AuthorizationPrompt";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthenticationInput from "../AuthenticationInput/AuthenticationInput";
+import { logout } from "../../utils/auth";
+import { LoggedInContext } from "../../contexts/LoggedInContext";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonText, values, errors, handleChange, isValidForm, mainErrorText, handleSubmit}) {
   const navigate = useNavigate();
   const [isEditingAvailable, setIsEditingAvailable] = useState(false);
+  const { setLoggedIn } = useContext(LoggedInContext);
+  const { setCurrentUser } = useContext(CurrentUserContext);
 
   function allowEditing(event) {
     event.preventDefault()
@@ -14,7 +19,12 @@ function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonT
   }
 
   function handleSignoutClick() {
-    navigate('/register');
+    logout()
+      .then(() => {
+        setLoggedIn(false);
+        setCurrentUser({});
+      })
+      .catch(err => console.log(err));
   }
   
   return (
