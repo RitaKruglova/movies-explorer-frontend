@@ -3,7 +3,7 @@ import { mainApi } from "../../utils/MainApi";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import ShowMoreButton from "../ShowMoreButton/ShowMoreButton";
 
-function MoviesCardList({isSavedMoviesPlace, foundMovies, handleMovieDelete}) {
+function MoviesCardList({isSavedMoviesPlace, foundMovies, handleMovieDelete, isSubmitted}) {
   const [movies, setMovies] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
   const [needShowMoreButton, setNeedShowMoreButton] = useState(false);
@@ -44,7 +44,6 @@ function MoviesCardList({isSavedMoviesPlace, foundMovies, handleMovieDelete}) {
   }, []);
 
   useEffect(() => {
-    console.log(foundMovies.length, visibleMoviesCount)
     if (foundMovies.length > visibleMoviesCount) {
       setNeedShowMoreButton(true);
     } else {
@@ -69,6 +68,7 @@ function MoviesCardList({isSavedMoviesPlace, foundMovies, handleMovieDelete}) {
   return (
     <section className="movies-card-list">
       <div className="movies-card-list__container">
+        {isSubmitted && !isSavedMoviesPlace && foundMovies.length === 0 && <p className="movies-card-list__error">Ничего не найдено</p>}
         {!isSavedMoviesPlace && foundMovies.slice(0, visibleMoviesCount).map((movie) => (
           <MoviesCard
             isSavedMoviesPlace={isSavedMoviesPlace}

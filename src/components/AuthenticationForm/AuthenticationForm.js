@@ -1,14 +1,12 @@
 import Logo from "../Logo/Logo";
 import AuthorizationPrompt from "../AuthorizationPrompt/AuthorizationPrompt";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import AuthenticationInput from "../AuthenticationInput/AuthenticationInput";
 import { logout } from "../../utils/auth";
 import { LoggedInContext } from "../../contexts/LoggedInContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonText, values, errors, handleChange, isValidForm, mainErrorText, handleSubmit}) {
-  const navigate = useNavigate();
   const [isEditingAvailable, setIsEditingAvailable] = useState(false);
   const { setLoggedIn } = useContext(LoggedInContext);
   const { setCurrentUser } = useContext(CurrentUserContext);
@@ -23,6 +21,8 @@ function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonT
       .then(() => {
         setLoggedIn(false);
         setCurrentUser({});
+        localStorage.removeItem('searchInput');
+        localStorage.removeItem('foundMovies');
       })
       .catch(err => console.log(err));
   }
