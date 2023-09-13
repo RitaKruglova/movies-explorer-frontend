@@ -3,6 +3,7 @@ import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { mainApi } from "../../utils/MainApi";
+import { LoggedInContext } from "../../contexts/LoggedInContext";
 
 function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
