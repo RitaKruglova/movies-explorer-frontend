@@ -3,7 +3,7 @@ import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { mainApi } from "../../utils/MainApi";
-import { LoggedInContext } from "../../contexts/LoggedInContext";
+import { validateEmail, validateText } from "../../utils/validation";
 
 function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
@@ -14,6 +14,7 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
     [NAME]: currentUser.name,
     [EMAIL]: currentUser.email
   });
+  const [isValidForm, setIsValidForm] = useState(true);
 
   function handleChange(event) {
     setValues({
@@ -21,6 +22,14 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
       [event.target.name]: event.target.value
     });
   }
+
+  useEffect(() => {
+    if (validateEmail(values.email) || validateText(values.name)) {
+      setIsValidForm(false);
+    } else {
+      setIsValidForm(true);
+    }
+  }, [values]);
 
   useEffect(() => {
     setValues({
@@ -60,8 +69,9 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
           values={values}
           errors={{}}
           handleChange={handleChange}
-          isValidForm={true}
+          isValidForm={isValidForm}
           handleSubmit={handleSubmit}
+          mainErrorText={mainErrorText}
         />
       </section>
     </>
