@@ -17,6 +17,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(document.cookie.includes('token'));
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [isServerError, setIsServerError] = useState(false);
 
   function checkToken() {
     mainApi.getCurrentUser()
@@ -62,12 +63,14 @@ function App() {
     if (!states.isSavedMoviesPlace) {
       localStorage.setItem('searchInput', states.searchInputValue);
       localStorage.setItem('foundMovies', JSON.stringify(movies));
+      localStorage.setItem('checkbox', states.isShort);
     }
     return movies;
   }
 
   function updateStates(filteredMovies, states) {
     states.setFoundMovies(filteredMovies);
+    setIsServerError(false);
   }
 
   function handleSearchFormSubmit(event, states) {
@@ -95,7 +98,9 @@ function App() {
         .then(filteredMovies => {
           updateStates(filteredMovies, states);
         })
-        .catch(err => console.log(err))
+        .catch(()=> {
+          setIsServerError(true);
+        })
         .finally(() => states.setIsLoading(false))
       }
     }
@@ -122,6 +127,7 @@ function App() {
                   isDropdownMenuOpen={isDropdownMenuOpen}
                   handleSearchFormSubmit={handleSearchFormSubmit}
                   isSavedMoviesPlace={false}
+                  isServerError={isServerError}
                   element={Movies}
                 />
               }

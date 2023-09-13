@@ -5,7 +5,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import SearchForm from '../SearchForm/SearchForm';
 
-function Movies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchFormSubmit, isSavedMoviesPlace}) {
+function Movies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchFormSubmit, isSavedMoviesPlace, isServerError}) {
   const [isLoading, setIsLoading] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('');
   const [errorText, setErrorText] = useState('');
@@ -24,6 +24,7 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchFormSubmi
   useEffect(() => {
     const savedSearchInput = localStorage.getItem('searchInput');
     const savedFoundMovies = JSON.parse(localStorage.getItem('foundMovies'));
+    const savedCheckboxState = localStorage.getItem('checkbox').toLowerCase() === 'true';
 
     if (savedSearchInput) {
       setSearchInputValue(savedSearchInput);
@@ -31,6 +32,10 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchFormSubmi
 
     if (savedFoundMovies) {
       setFoundMovies(savedFoundMovies);
+    }
+
+    if (savedCheckboxState) {
+      setIsShort(savedCheckboxState);
     }
   }, []);
 
@@ -72,6 +77,7 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchFormSubmi
             foundMovies={foundMovies}
             isSavedMoviesPlace={false}
             isSubmitted={isSubmitted}
+            isServerError={isServerError}
           />
         </div>
       </div>
