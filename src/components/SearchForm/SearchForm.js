@@ -1,9 +1,7 @@
-import { useState } from "react";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 
 function SearchForm({isDropdownMenuOpen, searchInputValue, handleChange, handleSubmit, errorText, handleCheckboxChange, isShort}) {
   
-
   return (
       <form className="search-form" onSubmit={handleSubmit} noValidate>
         <div className="search-form__container">

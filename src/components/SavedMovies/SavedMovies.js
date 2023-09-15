@@ -3,17 +3,15 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
-import ShowMoreButton from "../ShowMoreButton/ShowMoreButton";
 import { mainApi } from "../../utils/MainApi";
-import Preloader from "../Preloader/Preloader";
+import { filterMovies } from "../../utils/utils";
 
-function SavedMovies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchFormSubmit, isSavedMoviesPlace}) {
+function SavedMovies({toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace}) {
   const [foundMovies, setFoundMovies] = useState([]);
+  const [allMovies, setAllMovies] = useState([]);
   const [searchInputValue, setSearchInputValue] = useState('');
   const [errorText, setErrorText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
   const [isShort, setIsShort] = useState(false);
-  const [needShowMoreButton, setNeedShowMoreButton] = useState(false);
 
   function handleChange(event) {
     setSearchInputValue(event.target.value);
@@ -26,38 +24,52 @@ function SavedMovies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchForm
   useEffect(() => {
     mainApi.getLikedMovies()
       .then(likedMovies => {
-        setFoundMovies(likedMovies)
+        setFoundMovies(likedMovies);
+        setAllMovies(likedMovies);
       })
   }, []);
 
   useEffect(() => {
     if (searchInputValue) {
       setErrorText('');
+    } else {
     }
   }, [searchInputValue]);
 
   function handleSubmit(event) {
-    handleSearchFormSubmit(event, {
-      searchInputValue,
-      setErrorText,
-      setIsLoading,
-      isShort,
-      isSavedMoviesPlace,
-      setFoundMovies,
-      setNeedShowMoreButton
-    })
+    event.preventDefault();
+
+    if (!searchInputValue) {
+      setErrorText('Нужно ввести ключевое слово');
+    } else {
+      setErrorText('');
+      setFoundMovies(filterMovies(allMovies, {
+        isShort,
+        searchInputValue,
+        isSavedMoviesPlace,
+        foundMovies
+      }));
+    }
   }
 
   function handleMovieDelete(id) {
     setFoundMovies(prevMovies => prevMovies.filter(movie => movie._id !== id))
   }
 
+  useEffect(() => {
+    setFoundMovies(filterMovies(allMovies, {
+      isShort,
+      searchInputValue,
+      isSavedMoviesPlace,
+      foundMovies
+    }))
+  }, [isShort]);
+
   return (
     <>
       <Header isAccountButtonWhite={true} toggleMenuVisibility={toggleMenuVisibility} isDropdownMenuOpen={isDropdownMenuOpen}/>
       <div className="saved-movies">
         <div className="saved-movies__container">
-          {isLoading && <Preloader />}
           <SearchForm
             isDropdownMenuOpen={isDropdownMenuOpen}
             handleSubmit={handleSubmit}
@@ -69,7 +81,6 @@ function SavedMovies({toggleMenuVisibility, isDropdownMenuOpen, handleSearchForm
             isSavedMoviesPlace={isSavedMoviesPlace}
             foundMovies={foundMovies}
             handleMovieDelete={handleMovieDelete}
-            setNeedShowMoreButton={setNeedShowMoreButton}
           />
         </div>
       </div>

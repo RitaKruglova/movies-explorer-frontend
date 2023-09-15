@@ -1,13 +1,13 @@
 import Logo from "../Logo/Logo";
 import AuthorizationPrompt from "../AuthorizationPrompt/AuthorizationPrompt";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import AuthenticationInput from "../AuthenticationInput/AuthenticationInput";
 import { logout } from "../../utils/auth";
 import { LoggedInContext } from "../../contexts/LoggedInContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonText, values, errors, handleChange, isValidForm, mainErrorText, handleSubmit}) {
-  const [isEditingAvailable, setIsEditingAvailable] = useState(false);
+function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonText, values, errors, handleChange, isValidForm, message, handleSubmit, isEditingAvailable, setIsEditingAvailable, isSuccess}) {
+  
   const { setLoggedIn } = useContext(LoggedInContext);
   const { setCurrentUser } = useContext(CurrentUserContext);
 
@@ -23,6 +23,7 @@ function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonT
         setCurrentUser({});
         localStorage.removeItem('searchInput');
         localStorage.removeItem('foundMovies');
+        localStorage.removeItem('checkbox');
       })
       .catch(err => console.log(err));
   }
@@ -97,7 +98,7 @@ function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonT
             </div>
           :
           <div className={`authentication__button-container${isProfilePlace ? " authentication__button-container_place_profile" : ""}${isRegisterPlace ? " authentication__button-container_place_register" : ""}`}>
-            <span className="authentication__main-error">{mainErrorText}</span>
+            <span className={`authentication__message${isProfilePlace && isSuccess ? " authentication__message_color_black" : ""}`}>{message}</span>
             <button
               type="submit"
               className={`authentication__submit-button${isProfilePlace ? " authentication__submit-button_place_profile" : ""}${isRegisterPlace ? " authentication__submit-button_place_register" : ""}`}

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import { useState } from 'react';
 
 function Register() {
-  const [mainErrorText, setMainErrorText] = useState('');
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const NAME = 'name';
   const EMAIL = 'email';
@@ -46,9 +46,9 @@ function Register() {
       .then(() => navigate('/signin', {replace: true}))
       .catch(err => {
         if (err.statusCode === 400) {
-          setMainErrorText('Пользователь с таким email уже существует.');
+          setMessage('Пользователь с таким email уже существует.');
         } else {
-          setMainErrorText('При регистрации пользователя произошла ошибка.');
+          setMessage('При регистрации пользователя произошла ошибка.');
         }
       })
   }
@@ -64,7 +64,7 @@ function Register() {
         errors={errors}
         handleChange={handleChange}
         isValidForm={isValidForm}
-        mainErrorText={mainErrorText}
+        message={message}
         handleSubmit={handleSubmit}
       />
     </section>
