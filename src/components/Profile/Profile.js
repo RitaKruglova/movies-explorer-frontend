@@ -7,7 +7,9 @@ import { validateEmail, validateText } from "../../utils/validation";
 
 function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
   const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
-  const [mainErrorText, setMainErrorText] = useState('');
+  const [message, setMessage] = useState('');
+  const [isEditingAvailable, setIsEditingAvailable] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const NAME = 'name';
   const EMAIL = 'email';
   const [values, setValues] = useState({
@@ -48,11 +50,15 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
       .then(data => {
         setCurrentUser(data);
       })
+      .then(() => {
+        setIsSuccess(true);
+        setMessage('Данные успешно сохранены');
+      })
       .catch(err => {
         if (err.statusCode === 400) {
-          setMainErrorText('Пользователь с таким email уже существует.');
+          setMessage('Пользователь с таким email уже существует.');
         } else {
-          setMainErrorText('При обновлении профиля произошла ошибка.');
+          setMessage('При обновлении профиля произошла ошибка.');
         }
       })
   }
@@ -71,7 +77,10 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
           handleChange={handleChange}
           isValidForm={isValidForm}
           handleSubmit={handleSubmit}
-          mainErrorText={mainErrorText}
+          message={message}
+          isEditingAvailable={isEditingAvailable}
+          setIsEditingAvailable={setIsEditingAvailable}
+          isSuccess={isSuccess}
         />
       </section>
     </>

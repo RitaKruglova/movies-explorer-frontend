@@ -11,13 +11,12 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { LoggedInContext } from '../../contexts/LoggedInContext';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { mainApi } from '../../utils/MainApi';
-import { moviesApi } from '../../utils/MoviesApi';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(document.cookie.includes('token'));
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [isServerError, setIsServerError] = useState(false);
+  
 
   function checkToken() {
     mainApi.getCurrentUser()
@@ -48,64 +47,6 @@ function App() {
     }
   }
 
-  function filterMovies(data, states) {
-    if (states.isShort) {
-      data = data.filter(movie => movie.duration <= 40);
-    }
-  
-    const movies = data.filter(movie => {
-      return Object.values(movie).some(item => {
-        const itemToString = String(item);
-        const lowerItem = itemToString.toLowerCase();
-        return lowerItem.includes(states.searchInputValue.toLowerCase());
-      });
-    });
-    if (!states.isSavedMoviesPlace) {
-      localStorage.setItem('searchInput', states.searchInputValue);
-      localStorage.setItem('foundMovies', JSON.stringify(movies));
-      localStorage.setItem('checkbox', states.isShort);
-    }
-    return movies;
-  }
-
-  function updateStates(filteredMovies, states) {
-    states.setFoundMovies(filteredMovies);
-    setIsServerError(false);
-  }
-
-  function handleSearchFormSubmit(event, states) {
-    event.preventDefault();
-    if (!states.searchInputValue) {
-      states.setErrorText('Нужно ввести ключевое слово');
-    } else {
-      states.setIsLoading(true);
-      
-      if (states.isSavedMoviesPlace) {
-        mainApi.getLikedMovies()
-        .then(data => {
-          return filterMovies(data, states);
-        })
-        .then(filteredMovies => {
-          updateStates(filteredMovies, states);
-        })
-        .catch(err => console.log(err))
-        .finally(() => states.setIsLoading(false))
-      } else {
-        moviesApi.getAllMovies()
-        .then(data => {
-          return filterMovies(data, states);
-        })
-        .then(filteredMovies => {
-          updateStates(filteredMovies, states);
-        })
-        .catch(()=> {
-          setIsServerError(true);
-        })
-        .finally(() => states.setIsLoading(false))
-      }
-    }
-  }
-
   return (
     <div className="page">
       <LoggedInContext.Provider value={{loggedIn, setLoggedIn}} >
@@ -125,9 +66,7 @@ function App() {
                 <ProtectedRoute
                   toggleMenuVisibility={toggleMenuVisibility}
                   isDropdownMenuOpen={isDropdownMenuOpen}
-                  handleSearchFormSubmit={handleSearchFormSubmit}
                   isSavedMoviesPlace={false}
-                  isServerError={isServerError}
                   element={Movies}
                 />
               }
@@ -138,7 +77,6 @@ function App() {
                 <ProtectedRoute
                   toggleMenuVisibility={toggleMenuVisibility}
                   isDropdownMenuOpen={isDropdownMenuOpen}
-                  handleSearchFormSubmit={handleSearchFormSubmit}
                   isSavedMoviesPlace={true}
                   element={SavedMovies}
                 />

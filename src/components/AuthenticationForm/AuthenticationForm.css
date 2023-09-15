@@ -57,7 +57,7 @@
   margin: 172px 0 0;
 }
 
-.authentication__main-error {
+.authentication__message {
   color: #FF004C;
   text-align: center;
   font-size: 11px;
@@ -67,6 +67,10 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.authentication__message_color_black {
+  color: black;
 }
 
 .authentication__submit-button {

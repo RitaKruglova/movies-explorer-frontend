@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import useValidate from '../../hooks/useValidate';
 import { login } from '../../utils/auth';
 import { validateEmail, validatePassword } from '../../utils/validation';
@@ -9,7 +9,7 @@ import { mainApi } from '../../utils/MainApi';
 import { useNavigate } from 'react-router';
 
 function Login() {
-  const [mainErrorText, setMainErrorText] = useState('');
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
   const { setLoggedIn } = useContext(LoggedInContext);
@@ -43,7 +43,7 @@ function Login() {
     event.preventDefault();
 
     login(values[EMAIL], values[PASSWORD])
-      .then((data) => {
+      .then(() => {
         mainApi.getCurrentUser()
           .then(data => {
             setCurrentUser(data);
@@ -56,11 +56,11 @@ function Login() {
       })
       .catch(err => {
         if (err.statusCode === 400) {
-          setMainErrorText('Вы ввели неправильный логин или пароль.')
+          setMessage('Вы ввели неправильный логин или пароль.')
         } else if (err.statusCode === 401) {
-          setMainErrorText(' При авторизации произошла ошибка. Токен не передан или передан не в том формате.')
+          setMessage(' При авторизации произошла ошибка. Токен не передан или передан не в том формате.')
         } else {
-          setMainErrorText('При авторизации произошла ошибка. Переданный токен некорректен.')
+          setMessage('При авторизации произошла ошибка. Переданный токен некорректен.')
         }
       })
   }
@@ -77,7 +77,7 @@ function Login() {
         handleChange={handleChange}
         isValidForm={isValidForm}
         handleSubmit={handleSubmit}
-        mainErrorText={mainErrorText}
+        message={message}
       />
     </section>
   )
