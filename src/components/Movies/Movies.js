@@ -27,7 +27,7 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace}) 
   useEffect(() => {
     const savedSearchInput = localStorage.getItem('searchInput');
     const savedFoundMovies = JSON.parse(localStorage.getItem('foundMovies'));
-    const savedCheckboxState = localStorage.getItem('checkbox').toLowerCase() === 'true';
+    const savedCheckboxState = (localStorage.getItem('checkbox') || 'false').toLowerCase() === 'true';
 
     if (savedSearchInput) {
       setSearchInputValue(savedSearchInput);
