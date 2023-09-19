@@ -26,10 +26,14 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
   }
 
   useEffect(() => {
-    if (validateEmail(values.email) || validateText(values.name)) {
-      setIsValidForm(false);
+    if (currentUser.email === values.email && currentUser.name === values.name) {
+      setIsValidForm(false)
     } else {
-      setIsValidForm(true);
+      if (validateEmail(values.email) || validateText(values.name)) {
+        setIsValidForm(false);
+      } else {
+        setIsValidForm(true);
+      }
     }
   }, [values]);
 
