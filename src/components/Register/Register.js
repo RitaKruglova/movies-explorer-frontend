@@ -1,11 +1,16 @@
 import { validateText, validateEmail, validatePassword } from '../../utils/validation';
 import AuthenticationForm from '../AuthenticationForm/AuthenticationForm';
 import useValidate from '../../hooks/useValidate';
-import { register } from '../../utils/auth';
+import { login, register } from '../../utils/auth';
 import { useNavigate } from 'react-router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { mainApi } from '../../utils/MainApi';
+import { LoggedInContext } from '../../contexts/LoggedInContext';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Register() {
+  const { setLoggedIn } = useContext(LoggedInContext);
+  const { setCurrentUser } = useContext(CurrentUserContext);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const NAME = 'name';
@@ -43,7 +48,23 @@ function Register() {
     event.preventDefault();
 
     register(values[NAME], values[EMAIL], values[PASSWORD])
-      .then(() => navigate('/signin', {replace: true}))
+      .then(() => {
+        login(values[EMAIL], values[PASSWORD])
+          .then(() => {
+            mainApi.getCurrentUser()
+            .then(data => {
+              setCurrentUser(data);
+              setLoggedIn(true);
+              navigate('/movies', {replace: true});
+            })
+            .catch(err => {
+              console.log(err)
+            })
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      })
       .catch(err => {
         if (err.statusCode === 400) {
           setMessage('Пользователь с таким email уже существует.');

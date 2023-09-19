@@ -13,7 +13,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { mainApi } from '../../utils/MainApi';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(document.cookie.includes('token'));
+  const [loggedIn, setLoggedIn] = useState(true);
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   

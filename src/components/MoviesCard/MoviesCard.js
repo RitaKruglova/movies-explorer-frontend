@@ -15,6 +15,7 @@ function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies, h
   }, [likedMovies]);
 
   function handleLikeClick() {
+    console.log(movie);
     if (!isLiked) {
       mainApi.createMovie(movie)
         .then((likedMovie) => {
@@ -54,7 +55,7 @@ function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies, h
       onMouseLeave={handleMouseLeave}
     >
       <div className="movies-card__container">
-        <a className="movie-card__trailer-link" href={movie.trailerLink} target="blank">
+        <a className="movies-card__trailer-link" href={movie.trailerLink} target="_blank">
           <img className="movies-card__image" src={isSavedMoviesPlace ? movie.image : `https://api.nomoreparties.co/${movie.image.url}`} alt="Постер фильма" />
         </a>
         <div className="movies-card__info">
