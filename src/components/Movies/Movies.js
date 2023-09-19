@@ -27,6 +27,7 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace}) 
   useEffect(() => {
     const savedSearchInput = localStorage.getItem('searchInput');
     const savedFoundMovies = JSON.parse(localStorage.getItem('foundMovies'));
+    console.log(savedFoundMovies);
     const savedCheckboxState = (localStorage.getItem('checkbox') || 'false').toLowerCase() === 'true';
 
     if (savedSearchInput) {
@@ -84,13 +85,14 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace}) 
   }
 
   useEffect(() => {
+    console.log('isShort')
     setFoundMovies(filterMovies(allMovies, {
       isShort,
       searchInputValue,
       isSavedMoviesPlace,
       foundMovies
     }))
-  }, [isShort])
+  }, [isShort, allMovies])
 
   return (
     <>
