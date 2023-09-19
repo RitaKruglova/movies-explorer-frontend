@@ -11,6 +11,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { LoggedInContext } from '../../contexts/LoggedInContext';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { IsSubmittingContext } from '../../contexts/IsSubmittingContext';
+import { WidthContext } from '../../contexts/WidthContext';
 import { mainApi } from '../../utils/MainApi';
 import { moviesApi } from '../../utils/MoviesApi';
 import { login, register } from '../../utils/auth';
@@ -22,7 +23,19 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(true);
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   function checkToken() {
     mainApi.getCurrentUser()
@@ -166,77 +179,79 @@ function App() {
 
   return (
     <div className="page">
-      <IsSubmittingContext.Provider value={{isSubmitting, setIsSubmitting}} >
-        <LoggedInContext.Provider value={{loggedIn, setLoggedIn}} >
-          <CurrentUserContext.Provider value={{currentUser, setCurrentUser}} >
-            <Routes>
-              <Route path="/"
-                element={
-                  <Main
-                    toggleMenuVisibility={toggleMenuVisibility}
-                    isDropdownMenuOpen={isDropdownMenuOpen}
-                  />
-                }
-              />
-              <Route
-                path="/movies"
-                element={
-                  <ProtectedRoute
-                    toggleMenuVisibility={toggleMenuVisibility}
-                    isDropdownMenuOpen={isDropdownMenuOpen}
-                    isSavedMoviesPlace={false}
-                    handleSearchSubmit={handleSearchSubmit}
-                    deleteMovie={deleteMovie}
-                    saveMovie={saveMovie}
-                    removeMovie={removeMovie}
-                    element={Movies}
-                  />
-                }
-              />
-              <Route
-                path="/saved-movies"
-                element={
-                  <ProtectedRoute
-                    toggleMenuVisibility={toggleMenuVisibility}
-                    isDropdownMenuOpen={isDropdownMenuOpen}
-                    isSavedMoviesPlace={true}
-                    deleteMovie={deleteMovie}
-                    element={SavedMovies}
-                  />
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <ProtectedRoute
-                    toggleMenuVisibility={toggleMenuVisibility}
-                    isDropdownMenuOpen={isDropdownMenuOpen}
-                    handleProfileSubmit={handleProfileSubmit}
-                    element={Profile}
-                  />
-                }
-              />
-              <Route
-                path="/signup"
-                element={
-                  <Register
-                  handleRegisterSubmit={handleRegisterSubmit}
-                  />
-                }
-              />
-              <Route
-                path="/signin"
-                element={
-                  <Login
-                    handleLoginSubmit={handleLoginSubmit}
-                  />
-                }
-              />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </CurrentUserContext.Provider>
-        </LoggedInContext.Provider>
-      </IsSubmittingContext.Provider>
+      <WidthContext.Provider value={{width, setWidth}} >
+        <IsSubmittingContext.Provider value={{isSubmitting, setIsSubmitting}} >
+          <LoggedInContext.Provider value={{loggedIn, setLoggedIn}} >
+            <CurrentUserContext.Provider value={{currentUser, setCurrentUser}} >
+              <Routes>
+                <Route path="/"
+                  element={
+                    <Main
+                      toggleMenuVisibility={toggleMenuVisibility}
+                      isDropdownMenuOpen={isDropdownMenuOpen}
+                    />
+                  }
+                />
+                <Route
+                  path="/movies"
+                  element={
+                    <ProtectedRoute
+                      toggleMenuVisibility={toggleMenuVisibility}
+                      isDropdownMenuOpen={isDropdownMenuOpen}
+                      isSavedMoviesPlace={false}
+                      handleSearchSubmit={handleSearchSubmit}
+                      deleteMovie={deleteMovie}
+                      saveMovie={saveMovie}
+                      removeMovie={removeMovie}
+                      element={Movies}
+                    />
+                  }
+                />
+                <Route
+                  path="/saved-movies"
+                  element={
+                    <ProtectedRoute
+                      toggleMenuVisibility={toggleMenuVisibility}
+                      isDropdownMenuOpen={isDropdownMenuOpen}
+                      isSavedMoviesPlace={true}
+                      deleteMovie={deleteMovie}
+                      element={SavedMovies}
+                    />
+                  }
+                />
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute
+                      toggleMenuVisibility={toggleMenuVisibility}
+                      isDropdownMenuOpen={isDropdownMenuOpen}
+                      handleProfileSubmit={handleProfileSubmit}
+                      element={Profile}
+                    />
+                  }
+                />
+                <Route
+                  path="/signup"
+                  element={
+                    <Register
+                    handleRegisterSubmit={handleRegisterSubmit}
+                    />
+                  }
+                />
+                <Route
+                  path="/signin"
+                  element={
+                    <Login
+                      handleLoginSubmit={handleLoginSubmit}
+                    />
+                  }
+                />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </CurrentUserContext.Provider>
+          </LoggedInContext.Provider>
+        </IsSubmittingContext.Provider>
+      </WidthContext.Provider>
     </div>
   );
 }

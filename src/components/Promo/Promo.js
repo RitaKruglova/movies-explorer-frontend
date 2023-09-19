@@ -1,21 +1,10 @@
 import NavTab from '../NavTab/NavTab';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import GlobeImg from '../GlobeImg/GlobeImg';
+import { WidthContext } from "../../contexts/WidthContext";
 
 function Promo() {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const { width } = useContext(WidthContext);
 
   return (
     

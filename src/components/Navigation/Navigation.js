@@ -1,21 +1,10 @@
 import { NavLink, Link } from "react-router-dom";
 import AccountButton from "../AccountButton/AccountButton";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { WidthContext } from "../../contexts/WidthContext";
 
 function Navigation({isMainPage, isDropdownMenuPlace = false, isMenuOpen}) {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const { width } = useContext(WidthContext);
 
   return (
     <nav className={`navigation${isDropdownMenuPlace ? " navigation_place_dropdown-menu" : ""}${isMenuOpen ? " navigation_opened" : ""}`}>

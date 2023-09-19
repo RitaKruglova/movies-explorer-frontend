@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { mainApi } from "../../utils/MainApi";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import ShowMoreButton from "../ShowMoreButton/ShowMoreButton";
+import { WidthContext } from "../../contexts/WidthContext";
 
 function MoviesCardList({ isSavedMoviesPlace, foundMovies, handleMovieDelete, isServerError, deleteMovie, saveMovie, removeMovie }) {
+  const { width } = useContext(WidthContext);
   const [movies, setMovies] = useState([]);
-  const [width, setWidth] = useState(window.innerWidth);
   const [needShowMoreButton, setNeedShowMoreButton] = useState(false);
 
   function determineNumberOfMoviesToShow(width) {
@@ -18,18 +19,6 @@ function MoviesCardList({ isSavedMoviesPlace, foundMovies, handleMovieDelete, is
   const numberOfMoviesToShow = determineNumberOfMoviesToShow(width);
 
   const [visibleMoviesCount, setVisibleMoviesCount] = useState(numberOfMoviesToShow);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    }
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    }
-  }, []);
 
   function changeDurationFormat(timeInMinutes) {
     const hours = Math.floor(timeInMinutes / 60);
