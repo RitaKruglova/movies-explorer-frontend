@@ -1,4 +1,9 @@
+import { useContext } from 'react';
+import { IsSubmittingContext } from '../../contexts/IsSubmittingContext';
+
 function FilterCheckbox({isDropdownMenuOpen, handleCheckboxChange, isShort}) {
+  const { isSubmitting } = useContext(IsSubmittingContext);
+  
   return (
     <div className={`filter-checkbox${isDropdownMenuOpen ? " filter-checkbox_invisible" : ""}`}>
       <label className="filter-checkbox__label">
@@ -8,7 +13,7 @@ function FilterCheckbox({isDropdownMenuOpen, handleCheckboxChange, isShort}) {
               id="short-films"
               onChange={handleCheckboxChange}
               checked={isShort}
-              // disabled
+              disabled={!isSubmitting}
           />
           <div className="filter-checkbox__visible-input">
             <span className="filter-checkbox__round" />

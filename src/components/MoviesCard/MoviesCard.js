@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { mainApi } from '../../utils/MainApi';
 
-function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies, handleMovieDelete }) {
+function MoviesCard({ isSavedMoviesPlace = false, duration, movie, likedMovies, handleMovieDelete, deleteMovie, saveMovie, removeMovie }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -15,20 +14,10 @@ function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies, h
   }, [likedMovies]);
 
   function handleLikeClick() {
-    console.log(movie);
     if (!isLiked) {
-      mainApi.createMovie(movie)
-        .then((likedMovie) => {
-          movie._id = likedMovie._id;
-          setIsLiked(true);
-        })
-        .catch(err => console.log(err));
+      saveMovie(movie, { setIsLiked });
     } else {
-      mainApi.deleteMovie(movie._id)
-        .then(() => {
-          setIsLiked(false);
-        })
-        .catch(err => console.log(err))
+      removeMovie(movie, { setIsLiked });
     }
   }
 
@@ -41,7 +30,7 @@ function MoviesCard({isSavedMoviesPlace = false, duration, movie, likedMovies, h
   }
 
   function handleDeleteMovie() {
-    mainApi.deleteMovie(movie._id)
+      deleteMovie(movie)
       .then(() => {
         handleMovieDelete(movie._id)
       })

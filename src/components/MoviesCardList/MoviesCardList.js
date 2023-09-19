@@ -3,7 +3,7 @@ import { mainApi } from "../../utils/MainApi";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import ShowMoreButton from "../ShowMoreButton/ShowMoreButton";
 
-function MoviesCardList({isSavedMoviesPlace, foundMovies, handleMovieDelete, isServerError}) {
+function MoviesCardList({ isSavedMoviesPlace, foundMovies, handleMovieDelete, isServerError, deleteMovie, saveMovie, removeMovie }) {
   const [movies, setMovies] = useState([]);
   const [width, setWidth] = useState(window.innerWidth);
   const [needShowMoreButton, setNeedShowMoreButton] = useState(false);
@@ -68,7 +68,7 @@ function MoviesCardList({isSavedMoviesPlace, foundMovies, handleMovieDelete, isS
   return (
     <section className="movies-card-list">
       {isServerError && <p className="movies-card-list__error">Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.</p>}
-        {!isSavedMoviesPlace && foundMovies.length === 0 && <p className="movies-card-list__error">Ничего не найдено.</p>}
+        {foundMovies.length === 0 && <p className="movies-card-list__error">Ничего не найдено.</p>}
       <div className="movies-card-list__container">
         {!isSavedMoviesPlace && foundMovies.slice(0, visibleMoviesCount).map((movie) => (
           <MoviesCard
@@ -78,6 +78,9 @@ function MoviesCardList({isSavedMoviesPlace, foundMovies, handleMovieDelete, isS
             movie={movie}
             likedMovies={movies}
             handleMovieDelete={handleMovieDelete}
+            deleteMovie={deleteMovie}
+            saveMovie={saveMovie}
+            removeMovie={removeMovie}
           />
         ))}
         {isSavedMoviesPlace && foundMovies.map((movie) => (
@@ -88,6 +91,7 @@ function MoviesCardList({isSavedMoviesPlace, foundMovies, handleMovieDelete, isS
             movie={movie}
             likedMovies={movies}
             handleMovieDelete={handleMovieDelete}
+            deleteMovie={deleteMovie}
           />
         ))}
       </div>

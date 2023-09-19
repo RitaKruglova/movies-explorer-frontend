@@ -1,4 +1,8 @@
+import { useContext } from "react";
+import { IsSubmittingContext } from "../../contexts/IsSubmittingContext";
+
 function AuthenticationInput({isProfilePlace, isEditingAvailable, forAndIdValue, placeholderValue, inputType, inputValue, errorValue, handleChange, inputName}) {
+  const { isSubmitting } = useContext(IsSubmittingContext);
   return (
     <div className={`authentication__input-container${isProfilePlace ? " authentication__input-container_place_profile"  : ""}`}>
       <label className={`authentication__label${isProfilePlace ? " authentication__label_place_profile" : ""}`} htmlFor={forAndIdValue}>{placeholderValue}</label>
@@ -8,7 +12,7 @@ function AuthenticationInput({isProfilePlace, isEditingAvailable, forAndIdValue,
         type={inputType}
         id={forAndIdValue}
         placeholder={placeholderValue}
-        disabled={!isEditingAvailable}
+        disabled={!isEditingAvailable || !isSubmitting}
         onChange={handleChange}
         name={inputName}
         required

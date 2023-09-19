@@ -1,18 +1,12 @@
 import { validateText, validateEmail, validatePassword } from '../../utils/validation';
 import AuthenticationForm from '../AuthenticationForm/AuthenticationForm';
 import useValidate from '../../hooks/useValidate';
-import { login, register } from '../../utils/auth';
-import { useNavigate } from 'react-router';
 import { useContext, useState } from 'react';
-import { mainApi } from '../../utils/MainApi';
-import { LoggedInContext } from '../../contexts/LoggedInContext';
-import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { IsSubmittingContext } from '../../contexts/IsSubmittingContext';
 
-function Register() {
-  const { setLoggedIn } = useContext(LoggedInContext);
-  const { setCurrentUser } = useContext(CurrentUserContext);
+function Register({ handleRegisterSubmit }) {
+  const { setIsSubmitting } = useContext(IsSubmittingContext);
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
   const NAME = 'name';
   const EMAIL = 'email';
   const PASSWORD = 'password';
@@ -47,31 +41,9 @@ function Register() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    register(values[NAME], values[EMAIL], values[PASSWORD])
-      .then(() => {
-        login(values[EMAIL], values[PASSWORD])
-          .then(() => {
-            mainApi.getCurrentUser()
-            .then(data => {
-              setCurrentUser(data);
-              setLoggedIn(true);
-              navigate('/movies', {replace: true});
-            })
-            .catch(err => {
-              console.log(err)
-            })
-          })
-          .catch(err => {
-            console.log(err);
-          })
-      })
-      .catch(err => {
-        if (err.statusCode === 400) {
-          setMessage('Пользователь с таким email уже существует.');
-        } else {
-          setMessage('При регистрации пользователя произошла ошибка.');
-        }
-      })
+    setIsSubmitting(false);
+
+    handleRegisterSubmit(values[NAME], values[EMAIL], values[PASSWORD], { setMessage });
   }
 
   return (

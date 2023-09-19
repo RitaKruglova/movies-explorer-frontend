@@ -1,6 +1,9 @@
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
+import { IsSubmittingContext } from '../../contexts/IsSubmittingContext';
+import { useContext } from "react";
 
 function SearchForm({isDropdownMenuOpen, searchInputValue, handleChange, handleSubmit, errorText, handleCheckboxChange, isShort}) {
+  const { isSubmitting } = useContext(IsSubmittingContext);
   
   return (
       <form className="search-form" onSubmit={handleSubmit} noValidate>
@@ -12,6 +15,7 @@ function SearchForm({isDropdownMenuOpen, searchInputValue, handleChange, handleS
             required
             onChange={handleChange}
             value={searchInputValue}
+            disabled={!isSubmitting}
           />
           <button
             className="search-form__button"

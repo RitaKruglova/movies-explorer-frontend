@@ -6,7 +6,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import { mainApi } from "../../utils/MainApi";
 import { filterMovies } from "../../utils/utils";
 
-function SavedMovies({toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace}) {
+function SavedMovies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace, deleteMovie }) {
   const [foundMovies, setFoundMovies] = useState([]);
   const [allMovies, setAllMovies] = useState([]);
   const [searchInputValue, setSearchInputValue] = useState('');
@@ -81,6 +81,7 @@ function SavedMovies({toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPla
             isSavedMoviesPlace={isSavedMoviesPlace}
             foundMovies={foundMovies}
             handleMovieDelete={handleMovieDelete}
+            deleteMovie={deleteMovie}
           />
         </div>
       </div>
