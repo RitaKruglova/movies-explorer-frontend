@@ -1,6 +1,6 @@
 import { checkResponse } from "./utils";
 
-const moviesApiUrl = 'https://api.nomoreparties.co/beatfilm-movies'
+const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies'
 
 class MoviesApi {
   constructor({ baseUrl, headers }) {
@@ -23,7 +23,7 @@ class MoviesApi {
 }
 
 const moviesApi = new MoviesApi({
-  baseUrl: moviesApiUrl,
+  baseUrl: MOVIES_API_URL,
   headers: {
     'Content-Type': 'application/json'
   }

@@ -2,11 +2,12 @@ import Header from "../Header/Header";
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { mainApi } from "../../utils/MainApi";
 import { validateEmail, validateText } from "../../utils/validation";
+import { IsSubmittingContext } from "../../contexts/IsSubmittingContext";
 
-function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+function Profile({ toggleMenuVisibility, isDropdownMenuOpen, handleProfileSubmit }) {
+  const { setIsSubmitting } = useContext(IsSubmittingContext);
+  const { currentUser } = useContext(CurrentUserContext);
   const [message, setMessage] = useState('');
   const [isEditingAvailable, setIsEditingAvailable] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -47,24 +48,15 @@ function Profile({toggleMenuVisibility, isDropdownMenuOpen}) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    mainApi.changeUserInfo({
+    setIsSubmitting(false);
+
+    handleProfileSubmit({
       [NAME]: values.name,
       [EMAIL]: values.email
-    })
-      .then(data => {
-        setCurrentUser(data);
-      })
-      .then(() => {
-        setIsSuccess(true);
-        setMessage('Данные успешно сохранены');
-      })
-      .catch(err => {
-        if (err.statusCode === 400) {
-          setMessage('Пользователь с таким email уже существует.');
-        } else {
-          setMessage('При обновлении профиля произошла ошибка.');
-        }
-      })
+    }, {
+      setIsSuccess,
+      setMessage
+    });
   }
 
   return (

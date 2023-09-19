@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import SearchForm from '../SearchForm/SearchForm';
-import { moviesApi } from '../../utils/MoviesApi';
 import { filterMovies, updateStates } from '../../utils/utils';
+import { IsSubmittingContext } from '../../contexts/IsSubmittingContext';
 
-function Movies({toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace}) {
+function Movies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace, handleSearchSubmit, deleteMovie, saveMovie, removeMovie }) {
+  const { setIsSubmitting } = useContext(IsSubmittingContext);
   const [isLoading, setIsLoading] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('');
   const [errorText, setErrorText] = useState('');
@@ -48,39 +49,42 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace}) 
       setErrorText('');
     }
   }, [searchInputValue]);
-
+  
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (!searchInputValue) {
-      setErrorText('Нужно ввести ключевое слово');
-    } else {
-      setErrorText('');
-      setIsLoading(true);
-      moviesApi.getAllMovies()
-        .then(data => {
-          setAllMovies(data);
-          return filterMovies(data, {
-            isShort,
-            searchInputValue,
-            isSavedMoviesPlace,
-            foundMovies
-          })
-        })
-        .then(movies => {
-          updateStates(movies, {
-            setFoundMovies,
-            setIsServerError
-          });
-          localStorage.setItem('searchInput', searchInputValue);
-          localStorage.setItem('foundMovies', JSON.stringify(movies));
-          localStorage.setItem('checkbox', isShort);
-        })
-        .catch(()=> {
-          setIsServerError(true);
-        })
-        .finally(() => setIsLoading(false))
-    }
+    setIsSubmitting(false);
+
+    handleSearchSubmit({
+      searchInputValue,
+      setErrorText,
+      setIsLoading
+    })
+    .then(data => {
+      setAllMovies(data);
+      return filterMovies(data, {
+        isShort,
+        searchInputValue,
+        isSavedMoviesPlace,
+        foundMovies
+      })
+    })
+    .then(movies => {
+      updateStates(movies, {
+        setFoundMovies,
+        setIsServerError
+      });
+      localStorage.setItem('searchInput', searchInputValue);
+      localStorage.setItem('foundMovies', JSON.stringify(movies));
+      localStorage.setItem('checkbox', isShort);
+    })
+    .catch(()=> {
+      setIsServerError(true);
+    })
+    .finally(() => {
+      setIsLoading(false);
+      setIsSubmitting(true);
+    })
   }
 
   useEffect(() => {
@@ -90,6 +94,7 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace}) 
       isSavedMoviesPlace,
       foundMovies
     }))
+    localStorage.setItem('checkbox', isShort)
   }, [isShort, allMovies])
 
   return (
@@ -111,6 +116,9 @@ function Movies({toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace}) 
             foundMovies={foundMovies}
             isSavedMoviesPlace={false}
             isServerError={isServerError}
+            deleteMovie={deleteMovie}
+            saveMovie={saveMovie}
+            removeMovie={removeMovie}
           />
         </div>
       </div>
