@@ -1,20 +1,9 @@
 import MainPageTitle from "../MainPageTitle/MainPageTitle";
-import { useState, useEffect } from "react";
+import { WidthContext } from "../../contexts/WidthContext";
+import { useContext } from "react";
 
 function AboutProject() {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const { width } = useContext(WidthContext);
 
   return (
     <section className="about-project" id="about-project">
