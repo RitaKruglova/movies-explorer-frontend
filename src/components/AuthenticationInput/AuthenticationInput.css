@@ -62,6 +62,8 @@
   -o-transition: border-bottom 0.5s;
   transition: border-bottom 0.5s;
   background-color: white;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .authentication__input_place_profile {

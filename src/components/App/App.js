@@ -17,6 +17,8 @@ import { moviesApi } from '../../utils/MoviesApi';
 import { login, register } from '../../utils/auth';
 import { useNavigate } from 'react-router-dom';
 
+// Укажите мне пожалуйста в каком конкретном состоянии надпись "Ничего не найдено" не выводится. Я всё проверила и мои одногруппники тоже проверили и там всё выводится
+
 function App() {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(true);
