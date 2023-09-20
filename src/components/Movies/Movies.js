@@ -7,7 +7,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import { filterMovies, updateStates } from '../../utils/utils';
 import { IsSubmittingContext } from '../../contexts/IsSubmittingContext';
 
-function Movies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace, handleSearchSubmit, deleteMovie, saveMovie, removeMovie }) {
+function Movies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace, handleSearchSubmit, deleteMovie, saveMovie, removeMovie, fetchLikedMovies }) {
   const { setIsSubmitting } = useContext(IsSubmittingContext);
   const [isLoading, setIsLoading] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('');
@@ -52,9 +52,7 @@ function Movies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace, 
   
   function handleSubmit(event) {
     event.preventDefault();
-
-    setIsSubmitting(false);
-
+    
     handleSearchSubmit({
       searchInputValue,
       setErrorText,
@@ -78,8 +76,12 @@ function Movies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace, 
       localStorage.setItem('foundMovies', JSON.stringify(movies));
       localStorage.setItem('checkbox', isShort);
     })
-    .catch(()=> {
-      setIsServerError(true);
+    .catch((err)=> {
+      if (searchInputValue) {
+        setIsServerError(true);
+      } else {
+        console.log(err)
+      }
     })
     .finally(() => {
       setIsLoading(false);
@@ -119,6 +121,7 @@ function Movies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace, 
             deleteMovie={deleteMovie}
             saveMovie={saveMovie}
             removeMovie={removeMovie}
+            fetchLikedMovies={fetchLikedMovies}
           />
         </div>
       </div>

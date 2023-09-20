@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { validateEmail, validateText } from "../../utils/validation";
 import { IsSubmittingContext } from "../../contexts/IsSubmittingContext";
+import { NAME, EMAIL } from "../../constants/constants";
 
 function Profile({ toggleMenuVisibility, isDropdownMenuOpen, handleProfileSubmit }) {
   const { setIsSubmitting } = useContext(IsSubmittingContext);
@@ -11,8 +12,6 @@ function Profile({ toggleMenuVisibility, isDropdownMenuOpen, handleProfileSubmit
   const [message, setMessage] = useState('');
   const [isEditingAvailable, setIsEditingAvailable] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const NAME = 'name';
-  const EMAIL = 'email';
   const [values, setValues] = useState({
     [NAME]: currentUser.name,
     [EMAIL]: currentUser.email
@@ -47,8 +46,6 @@ function Profile({ toggleMenuVisibility, isDropdownMenuOpen, handleProfileSubmit
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    setIsSubmitting(false);
 
     handleProfileSubmit({
       [NAME]: values.name,

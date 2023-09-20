@@ -3,10 +3,9 @@ import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
-import { mainApi } from "../../utils/MainApi";
 import { filterMovies } from "../../utils/utils";
 
-function SavedMovies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace, deleteMovie }) {
+function SavedMovies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPlace, deleteMovie, fetchLikedMovies }) {
   const [foundMovies, setFoundMovies] = useState([]);
   const [allMovies, setAllMovies] = useState([]);
   const [searchInputValue, setSearchInputValue] = useState('');
@@ -22,7 +21,7 @@ function SavedMovies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPl
   }
 
   useEffect(() => {
-    mainApi.getLikedMovies()
+    fetchLikedMovies()
       .then(likedMovies => {
         setFoundMovies(likedMovies);
         setAllMovies(likedMovies);
@@ -53,7 +52,8 @@ function SavedMovies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPl
   }
 
   function handleMovieDelete(id) {
-    setFoundMovies(prevMovies => prevMovies.filter(movie => movie._id !== id))
+    setFoundMovies(prevMovies => prevMovies.filter(movie => movie._id !== id));
+    setAllMovies(prevMovies => prevMovies.filter(movie => movie._id !== id));
   }
 
   useEffect(() => {
@@ -62,7 +62,7 @@ function SavedMovies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPl
       searchInputValue,
       isSavedMoviesPlace,
       foundMovies
-    }))
+    }));
   }, [isShort]);
 
   return (
@@ -82,6 +82,7 @@ function SavedMovies({ toggleMenuVisibility, isDropdownMenuOpen, isSavedMoviesPl
             foundMovies={foundMovies}
             handleMovieDelete={handleMovieDelete}
             deleteMovie={deleteMovie}
+            fetchLikedMovies={fetchLikedMovies}
           />
         </div>
       </div>

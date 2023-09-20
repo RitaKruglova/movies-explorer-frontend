@@ -1,6 +1,5 @@
 import { checkResponse } from "./utils";
-
-const MOVIES_API_URL = 'https://api.nomoreparties.co/beatfilm-movies'
+import { MOVIES_API_URL } from "../constants/constants";
 
 class MoviesApi {
   constructor({ baseUrl, headers }) {
