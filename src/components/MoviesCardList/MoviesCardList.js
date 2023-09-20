@@ -1,10 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { mainApi } from "../../utils/MainApi";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import ShowMoreButton from "../ShowMoreButton/ShowMoreButton";
 import { WidthContext } from "../../contexts/WidthContext";
 
-function MoviesCardList({ isSavedMoviesPlace, foundMovies, handleMovieDelete, isServerError, deleteMovie, saveMovie, removeMovie }) {
+function MoviesCardList({ isSavedMoviesPlace, foundMovies, handleMovieDelete, isServerError, deleteMovie, saveMovie, removeMovie, fetchLikedMovies }) {
   const { width } = useContext(WidthContext);
   const [movies, setMovies] = useState([]);
   const [needShowMoreButton, setNeedShowMoreButton] = useState(false);
@@ -28,7 +27,7 @@ function MoviesCardList({ isSavedMoviesPlace, foundMovies, handleMovieDelete, is
   }
 
   useEffect(() => {
-    mainApi.getLikedMovies()
+    fetchLikedMovies()
       .then(movies => setMovies(movies));
   }, []);
 

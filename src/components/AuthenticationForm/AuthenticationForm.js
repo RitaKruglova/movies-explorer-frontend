@@ -5,9 +5,10 @@ import AuthenticationInput from "../AuthenticationInput/AuthenticationInput";
 import { logout } from "../../utils/auth";
 import { LoggedInContext } from "../../contexts/LoggedInContext";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { IsSubmittingContext } from "../../contexts/IsSubmittingContext";
 
 function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonText, values, errors, handleChange, isValidForm, message, handleSubmit, isEditingAvailable, setIsEditingAvailable, isSuccess}) {
-  
+  const { isSubmitting } = useContext(IsSubmittingContext);
   const { setLoggedIn } = useContext(LoggedInContext);
   const { setCurrentUser } = useContext(CurrentUserContext);
 
@@ -102,7 +103,7 @@ function AuthenticationForm({isRegisterPlace, titleText, isProfilePlace, buttonT
             <button
               type="submit"
               className={`authentication__submit-button${isProfilePlace ? " authentication__submit-button_place_profile" : ""}${isRegisterPlace ? " authentication__submit-button_place_register" : ""}`}
-              disabled={!isValidForm}
+              disabled={!isValidForm || !isSubmitting}
             >
               {buttonText}
             </button>

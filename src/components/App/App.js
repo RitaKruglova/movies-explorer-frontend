@@ -53,14 +53,20 @@ function App() {
 
   useEffect(() => {
     checkToken();
-  }, [])
+  }, []);
+
+  function fetchLikedMovies() {
+    return mainApi.getLikedMovies();
+  }
 
   function handleSearchSubmit(states) {
     if (!states.searchInputValue) {
       states.setErrorText('Нужно ввести ключевое слово');
+      return Promise.reject('Нужно ввести ключевое слово');
     } else {
       states.setErrorText('');
       states.setIsLoading(true);
+      setIsSubmitting(false);
       return moviesApi.getAllMovies();
     }
   }
@@ -93,6 +99,7 @@ function App() {
   }
 
   function handleLoginSubmit(email, password, states) {
+    setIsSubmitting(false);
     login(email, password)
       .then(() => {
         mainApi.getCurrentUser()
@@ -118,6 +125,7 @@ function App() {
   }
 
   function handleProfileSubmit(profileInputValues, states) {
+    setIsSubmitting(false);
     mainApi.changeUserInfo(profileInputValues)
       .then(data => {
         setCurrentUser(data);
@@ -139,6 +147,7 @@ function App() {
   }
 
   function handleRegisterSubmit(name, email, password, states) {
+    setIsSubmitting(false);
     register(name, email, password)
       .then(() => {
         login(email, password)
@@ -203,6 +212,7 @@ function App() {
                       deleteMovie={deleteMovie}
                       saveMovie={saveMovie}
                       removeMovie={removeMovie}
+                      fetchLikedMovies={fetchLikedMovies}
                       element={Movies}
                     />
                   }
@@ -215,6 +225,7 @@ function App() {
                       isDropdownMenuOpen={isDropdownMenuOpen}
                       isSavedMoviesPlace={true}
                       deleteMovie={deleteMovie}
+                      fetchLikedMovies={fetchLikedMovies}
                       element={SavedMovies}
                     />
                   }

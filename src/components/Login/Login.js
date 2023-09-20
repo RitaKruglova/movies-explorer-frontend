@@ -1,15 +1,21 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import useValidate from '../../hooks/useValidate';
 import { validateEmail, validatePassword } from '../../utils/validation';
 import AuthenticationForm from '../AuthenticationForm/AuthenticationForm';
-import { IsSubmittingContext } from '../../contexts/IsSubmittingContext';
+import { LoggedInContext } from '../../contexts/LoggedInContext';
+import { useNavigate } from 'react-router-dom';
+import { EMAIL, PASSWORD } from '../../constants/constants';
 
 function Login({ handleLoginSubmit }) {
-  const { setIsSubmitting } = useContext(IsSubmittingContext);
+  const { loggedIn } = useContext(LoggedInContext);
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
-  const EMAIL = 'email';
-  const PASSWORD = 'password';
+  useEffect(() => {
+    if (loggedIn) {
+      navigate('/movies');
+    }
+  }, []);
 
   function getErrorsByValues(values) {
     const errors ={}
@@ -34,8 +40,6 @@ function Login({ handleLoginSubmit }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    setIsSubmitting(false);
 
     handleLoginSubmit(values[EMAIL], values[PASSWORD], {
       setMessage

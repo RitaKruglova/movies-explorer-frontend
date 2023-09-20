@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 function SearchForm({isDropdownMenuOpen, searchInputValue, handleChange, handleSubmit, errorText, handleCheckboxChange, isShort}) {
   const { isSubmitting } = useContext(IsSubmittingContext);
-  
+
   return (
       <form className="search-form" onSubmit={handleSubmit} noValidate>
         <div className="search-form__container">
@@ -21,6 +21,7 @@ function SearchForm({isDropdownMenuOpen, searchInputValue, handleChange, handleS
             className="search-form__button"
             type="submit"
             aria-label="Найти фильмы"
+            disabled={!isSubmitting}
           >
             Найти
           </button>

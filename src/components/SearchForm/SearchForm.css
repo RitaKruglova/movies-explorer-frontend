@@ -73,6 +73,10 @@
   transition: opacity 0.5s;
 }
 
+.search-form__button:disabled {
+  background-color: #F5F5F5;
+}
+
 .search-form__button:hover {
   cursor: pointer;
   opacity: 0.8;

@@ -1,15 +1,21 @@
 import { validateText, validateEmail, validatePassword } from '../../utils/validation';
 import AuthenticationForm from '../AuthenticationForm/AuthenticationForm';
 import useValidate from '../../hooks/useValidate';
-import { useContext, useState } from 'react';
-import { IsSubmittingContext } from '../../contexts/IsSubmittingContext';
+import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { LoggedInContext } from '../../contexts/LoggedInContext';
+import { NAME, EMAIL, PASSWORD } from '../../constants/constants';
 
 function Register({ handleRegisterSubmit }) {
-  const { setIsSubmitting } = useContext(IsSubmittingContext);
   const [message, setMessage] = useState('');
-  const NAME = 'name';
-  const EMAIL = 'email';
-  const PASSWORD = 'password';
+  const navigate = useNavigate();
+  const { loggedIn } = useContext(LoggedInContext);
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate('/movies');
+    }
+  }, []);
 
   function getErrorsByValues(values) {
     const errors ={}
@@ -40,8 +46,6 @@ function Register({ handleRegisterSubmit }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    setIsSubmitting(false);
 
     handleRegisterSubmit(values[NAME], values[EMAIL], values[PASSWORD], { setMessage });
   }
