@@ -1,9 +1,9 @@
 # movies-explorer-frontend
 Фронтенд-часть итоговой проектной работы факультета web-разработки Яндекс практикума.
-(Пока только вёрстка)
-Многостраничное приложение созданное на React.
+Многостраничное приложение созданное на React, представляющее собой поисковик фильмов с ипользованием личного и стороннего API. 
+Код был выложен на удаленный сервер Yandex Cloud. В настоящий момент работа сервера приостановлена.
 ## Стек
-HTML, CSS, JavaScript, VSCode, LiveServer, React, React Router
+HTML, CSS, JavaScript, VSCode, LiveServer, React, React Router, Yandex Cloud
 ## Вёрстка
 1. Grid Layout
 2. Flexbox Layout
@@ -25,12 +25,6 @@ git@github.com:RitaKruglova/movies-explorer-frontend.git
 2. Ввести в терминале npm install.
 ## Ссылка на репозиторий проекта
 git@github.com:RitaKruglova/movies-explorer-frontend.git
-## Адреса
-IP  158.160.117.157
-Frontend  https://movies.rita-kruglova.nomoreparties.co/movies
-Backend  https://api.movies.rita-kruglova.nomoreparties.co/movies
 ## Ссылка на макет
 https://www.figma.com/file/pjXybhYbt3b35dq3VfwzFl/light-1-(Copy)?node-id=41056%3A8365&mode=dev
-## Ссылка на pull request
-https://github.com/RitaKruglova/movies-explorer-frontend/pull/17
 
